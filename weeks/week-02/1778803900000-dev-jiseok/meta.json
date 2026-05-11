@@ -1,0 +1,13 @@
+{
+  "id": "1778803900000-dev-jiseok",
+  "title": "Week 2 참고 자료 — Multi-Agent 아키텍처 학습 (33선)",
+  "author": "dev-jiseok",
+  "date": "2026-05-11T02:00:00.000Z",
+  "week": "2",
+  "season": "2",
+  "category": "note",
+  "description": "Multi-Agent 아키텍처 학습 자료 큐레이션. Anthropic 원전 3편(필수) / Claude Subagent · Strands · AgentCore · LangGraph 프레임워크 비교 / FinOps Multi-Agent 사례 6편 / 한국어 케이스 / 심화 자료. 시즌 1 자료와 중복 없음.",
+  "files": [
+    "study-materials.md"
+  ]
+}
