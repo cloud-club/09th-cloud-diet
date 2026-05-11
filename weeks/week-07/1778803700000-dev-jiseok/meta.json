@@ -1,0 +1,13 @@
+{
+  "id": "1778803700000-dev-jiseok",
+  "title": "시즌 2 시나리오 — Week 7",
+  "author": "dev-jiseok",
+  "date": "2026-05-11T00:15:00.000Z",
+  "week": "7",
+  "season": "2",
+  "category": "reference",
+  "description": "멀티 클라우드 + FOCUS 1.1 시나리오 10선 — AWS/GCP/Azure 비교 + 표준화",
+  "files": [
+    "scenarios-week7.md"
+  ]
+}

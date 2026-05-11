@@ -297,5 +297,96 @@
       "study-materials.md"
     ],
     "season": "1"
+  },
+  {
+    "id": "1778803400000-dev-jiseok",
+    "title": "시즌 2 시나리오 — Week 2",
+    "author": "dev-jiseok",
+    "date": "2026-05-11T00:10:00.000Z",
+    "week": "2",
+    "season": "2",
+    "category": "reference",
+    "description": "멀티 에이전트 아키텍처 검증용 시나리오 7선 — 시즌 1 카탈로그를 결합한 multi-domain fusion 패턴",
+    "files": [
+      "scenarios-week2.md"
+    ]
+  },
+  {
+    "id": "1778803460000-dev-jiseok",
+    "title": "시즌 2 시나리오 — Week 3",
+    "author": "dev-jiseok",
+    "date": "2026-05-11T00:11:00.000Z",
+    "week": "3",
+    "season": "2",
+    "category": "reference",
+    "description": "Cross-Service 결합 낭비 시나리오 12선 — 단일 도메인 분석으로는 안 잡히는 실무 패턴",
+    "files": [
+      "scenarios-week3.md"
+    ]
+  },
+  {
+    "id": "1778803520000-dev-jiseok",
+    "title": "시즌 2 시나리오 — Week 4",
+    "author": "dev-jiseok",
+    "date": "2026-05-11T00:12:00.000Z",
+    "week": "4",
+    "season": "2",
+    "category": "reference",
+    "description": "Live 환경 분석 시나리오 10선 — Cost Explorer / Pricing / Compute Optimizer / Anomaly Detection API 활용",
+    "files": [
+      "scenarios-week4.md"
+    ]
+  },
+  {
+    "id": "1778803580000-dev-jiseok",
+    "title": "시즌 2 시나리오 — Week 5",
+    "author": "dev-jiseok",
+    "date": "2026-05-11T00:13:00.000Z",
+    "week": "5",
+    "season": "2",
+    "category": "reference",
+    "description": "AI 워크로드(L4) 시나리오 12선 — Bedrock, SageMaker, GPU, RAG, fine-tuning 비용 패턴",
+    "files": [
+      "scenarios-week5.md"
+    ]
+  },
+  {
+    "id": "1778803640000-dev-jiseok",
+    "title": "시즌 2 시나리오 — Week 6",
+    "author": "dev-jiseok",
+    "date": "2026-05-11T00:14:00.000Z",
+    "week": "6",
+    "season": "2",
+    "category": "reference",
+    "description": "Shift Left 사전 비용 검증 시나리오 15선 + 결합 2선 — PR/Terraform plan 단계 OPA 정책",
+    "files": [
+      "scenarios-week6.md"
+    ]
+  },
+  {
+    "id": "1778803700000-dev-jiseok",
+    "title": "시즌 2 시나리오 — Week 7",
+    "author": "dev-jiseok",
+    "date": "2026-05-11T00:15:00.000Z",
+    "week": "7",
+    "season": "2",
+    "category": "reference",
+    "description": "멀티 클라우드 + FOCUS 1.1 시나리오 10선 — AWS/GCP/Azure 비교 + 표준화",
+    "files": [
+      "scenarios-week7.md"
+    ]
+  },
+  {
+    "id": "1778803820000-dev-jiseok",
+    "title": "시즌 2 시나리오 카탈로그 (전체 66선)",
+    "author": "dev-jiseok",
+    "date": "2026-05-11T00:20:00.000Z",
+    "week": "general",
+    "season": "2",
+    "category": "reference",
+    "description": "시즌 2 8주 커리큘럼에 맞춘 실무형 FinOps 시나리오 카탈로그. Week 2~7 주차별로도 분할 자료가 있음.",
+    "files": [
+      "scenarios-s2.md"
+    ]
   }
 ]

@@ -1,0 +1,13 @@
+{
+  "id": "1778803400000-dev-jiseok",
+  "title": "시즌 2 시나리오 — Week 2",
+  "author": "dev-jiseok",
+  "date": "2026-05-11T00:10:00.000Z",
+  "week": "2",
+  "season": "2",
+  "category": "reference",
+  "description": "멀티 에이전트 아키텍처 검증용 시나리오 7선 — 시즌 1 카탈로그를 결합한 multi-domain fusion 패턴",
+  "files": [
+    "scenarios-week2.md"
+  ]
+}

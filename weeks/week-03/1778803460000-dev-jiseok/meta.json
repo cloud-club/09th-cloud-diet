@@ -1,0 +1,13 @@
+{
+  "id": "1778803460000-dev-jiseok",
+  "title": "시즌 2 시나리오 — Week 3",
+  "author": "dev-jiseok",
+  "date": "2026-05-11T00:11:00.000Z",
+  "week": "3",
+  "season": "2",
+  "category": "reference",
+  "description": "Cross-Service 결합 낭비 시나리오 12선 — 단일 도메인 분석으로는 안 잡히는 실무 패턴",
+  "files": [
+    "scenarios-week3.md"
+  ]
+}

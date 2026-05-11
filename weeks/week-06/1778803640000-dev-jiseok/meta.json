@@ -1,0 +1,13 @@
+{
+  "id": "1778803640000-dev-jiseok",
+  "title": "시즌 2 시나리오 — Week 6",
+  "author": "dev-jiseok",
+  "date": "2026-05-11T00:14:00.000Z",
+  "week": "6",
+  "season": "2",
+  "category": "reference",
+  "description": "Shift Left 사전 비용 검증 시나리오 15선 + 결합 2선 — PR/Terraform plan 단계 OPA 정책",
+  "files": [
+    "scenarios-week6.md"
+  ]
+}

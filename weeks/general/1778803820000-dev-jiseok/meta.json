@@ -1,0 +1,13 @@
+{
+  "id": "1778803820000-dev-jiseok",
+  "title": "시즌 2 시나리오 카탈로그 (전체 66선)",
+  "author": "dev-jiseok",
+  "date": "2026-05-11T00:20:00.000Z",
+  "week": "general",
+  "season": "2",
+  "category": "reference",
+  "description": "시즌 2 8주 커리큘럼에 맞춘 실무형 FinOps 시나리오 카탈로그. Week 2~7 주차별로도 분할 자료가 있음.",
+  "files": [
+    "scenarios-s2.md"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "1778803520000-dev-jiseok",
+  "title": "시즌 2 시나리오 — Week 4",
+  "author": "dev-jiseok",
+  "date": "2026-05-11T00:12:00.000Z",
+  "week": "4",
+  "season": "2",
+  "category": "reference",
+  "description": "Live 환경 분석 시나리오 10선 — Cost Explorer / Pricing / Compute Optimizer / Anomaly Detection API 활용",
+  "files": [
+    "scenarios-week4.md"
+  ]
+}
