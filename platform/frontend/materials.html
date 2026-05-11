@@ -75,6 +75,9 @@
         </div>
 
         <div id="materials-content" style="display:none;">
+          <!-- Season Selector -->
+          <div class="season-selector" id="season-selector"></div>
+
           <!-- Week Filter Tabs -->
           <div class="tabs" id="week-filter-tabs" style="margin-bottom:20px;">
             <div class="tab active" data-week="all" onclick="filterWeek('all', this)">
@@ -107,7 +110,14 @@
         <input type="text" id="mat-title" placeholder="e.g. Week 3 FinOps 정리노트">
       </div>
 
-      <div class="form-grid">
+      <div class="form-grid-3">
+        <div class="form-group">
+          <label for="mat-season">Season</label>
+          <select id="mat-season">
+            <option value="2">시즌 2 (현재)</option>
+            <option value="1">시즌 1 (아카이브)</option>
+          </select>
+        </div>
         <div class="form-group">
           <label for="mat-week">Week</label>
           <select id="mat-week">

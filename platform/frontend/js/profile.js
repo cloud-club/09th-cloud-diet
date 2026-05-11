@@ -5,6 +5,65 @@
 
 let scoreTrendChart = null;
 
+const SEASON_FALLBACK = [
+  { id: '1', label: '시즌 1', sublabel: 'AI Cloud FinOps — 시뮬레이션 문제 풀이', archived: true },
+  { id: '2', label: '시즌 2', sublabel: '클라우드 다이어트하기 고도화', archived: false },
+];
+let seasonsConfig = SEASON_FALLBACK;
+let currentSeason = '2';
+
+async function loadSeasonsConfig() {
+  try {
+    const group = await APP.getYAML('platform/config/group.yaml');
+    if (group && Array.isArray(group.seasons) && group.seasons.length) {
+      seasonsConfig = group.seasons.map(s => ({
+        id: String(s.id),
+        label: s.label || `시즌 ${s.id}`,
+        sublabel: s.sublabel || '',
+        archived: s.archived === true || s.archived === 'true',
+      }));
+    }
+    if (group && group.current_season) currentSeason = String(group.current_season);
+  } catch {}
+
+  const urlSeason = new URLSearchParams(window.location.search).get('season');
+  if (urlSeason) currentSeason = String(urlSeason);
+  else {
+    const stored = localStorage.getItem('finops:season');
+    if (stored) currentSeason = String(stored);
+  }
+}
+
+function buildSeasonSelector() {
+  const el = document.getElementById('season-selector');
+  if (!el) return;
+  el.innerHTML = seasonsConfig.map(s => {
+    const isActive = String(currentSeason) === s.id;
+    const tag = s.archived
+      ? '<span class="badge badge-archived">아카이브</span>'
+      : '<span class="badge badge-current">진행 중</span>';
+    return `
+      <div class="season-chip ${isActive ? 'active' : ''} ${s.archived ? 'archived' : ''}"
+           data-season="${s.id}" onclick="selectSeason('${s.id}')">
+        <div class="season-chip-icon">S${s.id}</div>
+        <div class="season-chip-text">
+          <span class="season-chip-label">${escapeHtml(s.label)} ${tag}</span>
+          <span class="season-chip-sub">${escapeHtml(s.sublabel || '')}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function selectSeason(seasonId) {
+  if (String(currentSeason) === String(seasonId)) return;
+  currentSeason = String(seasonId);
+  try { localStorage.setItem('finops:season', currentSeason); } catch {}
+  const url = new URL(window.location.href);
+  url.searchParams.set('season', currentSeason);
+  window.location.href = url.toString();
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   await APP.init();
 
@@ -12,6 +71,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.location.href = 'index.html';
     return;
   }
+
+  await loadSeasonsConfig();
 
   // Determine which user to display
   const params = new URLSearchParams(window.location.search);
@@ -23,6 +84,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Load profile
   await loadProfile(targetUser, isOwnProfile);
+  buildSeasonSelector();
 });
 
 // ── Member Switcher ──
@@ -119,10 +181,11 @@ async function loadProfile(username, isOwnProfile) {
 
 async function gatherSubmissions(username) {
   const submissions = [];
+  const memberRoot = `members/${username}/season-${currentSeason}/submissions`;
   for (let week = 1; week <= 8; week++) {
     const weekStr = `week-${String(week).padStart(2, '0')}`;
     try {
-      const files = await APP.listDir(`members/${username}/submissions/${weekStr}`);
+      const files = await APP.listDir(`${memberRoot}/${weekStr}`);
       if (files && files.length > 0) {
         for (const f of files) {
           if (f.name.endsWith('.json')) {
@@ -142,14 +205,15 @@ async function gatherSubmissions(username) {
 
 async function gatherScores(username) {
   const scores = [];
+  const scoresRoot = `scores/season-${currentSeason}`;
   for (let week = 1; week <= 8; week++) {
     const weekStr = `week-${String(week).padStart(2, '0')}`;
     try {
-      const data = await APP.getJSON(`scores/${weekStr}/${username}.json`);
+      const data = await APP.getJSON(`${scoresRoot}/${weekStr}/${username}.json`);
       // Get rank from summary
       let rank = 0;
       try {
-        const summary = await APP.getJSON(`scores/${weekStr}/summary.json`);
+        const summary = await APP.getJSON(`${scoresRoot}/${weekStr}/summary.json`);
         const entry = (summary.leaderboard || []).find(e => e.username === username);
         if (entry) rank = entry.rank;
       } catch {}
@@ -169,10 +233,11 @@ async function gatherScores(username) {
 
 async function gatherAssignments(username) {
   const assignments = [];
+  const problemsRoot = `members/${username}/season-${currentSeason}/problems`;
   for (let week = 1; week <= 8; week++) {
     const weekStr = `week-${String(week).padStart(2, '0')}`;
     try {
-      const data = await APP.getJSON(`members/${username}/problems/${weekStr}/assignment.json`);
+      const data = await APP.getJSON(`${problemsRoot}/${weekStr}/assignment.json`);
       assignments.push({
         week,
         level: data.level,

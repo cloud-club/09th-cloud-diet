@@ -259,7 +259,19 @@ async function submitAnswer() {
   try {
     const weekStr = `week-${String(parseInt(data.week)).padStart(2, '0')}`;
     const username = APP.getUsername();
-    const basePath = `members/${username}/submissions/${weekStr}`;
+    // Submissions are scoped per season — derive current season the same way other pages do
+    let season = '2';
+    try {
+      const g = await APP.getYAML('platform/config/group.yaml');
+      if (g && g.current_season) season = String(g.current_season);
+    } catch {}
+    const urlSeason = new URLSearchParams(window.location.search).get('season');
+    if (urlSeason) season = String(urlSeason);
+    else {
+      const stored = localStorage.getItem('finops:season');
+      if (stored) season = String(stored);
+    }
+    const basePath = `members/${username}/season-${season}/submissions/${weekStr}`;
 
     // 1. Upload attached files to repo (if any, and not in local mode)
     if (uploadedFiles.length > 0 && !APP.LOCAL) {

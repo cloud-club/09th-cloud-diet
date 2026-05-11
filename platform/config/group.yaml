@@ -4,6 +4,20 @@ group:
   description: "Cloud Club 9기 시즌 2 — 클라우드 다이어트하기 고도화"
   repo: "cloud-club/09th-cloud-diet"
 
+# 시즌 정보
+current_season: 2
+seasons:
+  - id: 1
+    label: "시즌 1"
+    sublabel: "AI Cloud FinOps — 시뮬레이션 문제 풀이"
+    archived: true
+    period: "2026-03 ~ 2026-05"
+  - id: 2
+    label: "시즌 2"
+    sublabel: "클라우드 다이어트하기 고도화"
+    archived: false
+    period: "2026-05 ~ 2026-06"
+
 # 관리자 목록 (GitHub username)
 admins:
   - dev-jiseok

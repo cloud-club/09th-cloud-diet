@@ -8,5 +8,6 @@
   "description": "7주차 L3 참고 자료 — RI/SP 최적화, NAT/VPC 네트워크 비용, CUR 분석, 알림 생성",
   "files": [
     "study-materials.md"
-  ]
+  ],
+  "season": "1"
 }

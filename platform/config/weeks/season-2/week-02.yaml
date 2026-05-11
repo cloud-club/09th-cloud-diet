@@ -1,0 +1,10 @@
+# Season 2 — Week 2
+season: 2
+week: 2
+level: null
+num_problems: 0
+category: "multi-agent"
+reveal_date: "2026-05-18"
+title: "멀티 에이전트 아키텍처 도입"
+description: "Claude Code Subagent / LangGraph / Strands SDK / Bedrock AgentCore 비교 학습. 오케스트레이터 + 도메인 전문가 패턴, 컨텍스트 격리, 토큰 효율화."
+deliverable: "멀티 에이전트로 리팩토링된 자기 프로젝트"

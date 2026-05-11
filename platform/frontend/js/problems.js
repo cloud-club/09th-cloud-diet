@@ -6,6 +6,38 @@
 let metricsChart = null;
 let trafficChart = null;
 
+// Season state (persisted via querystring + localStorage)
+const SEASON_FALLBACK = [
+  { id: '1', label: '시즌 1', sublabel: 'AI Cloud FinOps — 시뮬레이션 문제 풀이', archived: true },
+  { id: '2', label: '시즌 2', sublabel: '클라우드 다이어트하기 고도화', archived: false },
+];
+let seasonsConfig = SEASON_FALLBACK;
+let currentSeason = '2';
+
+async function loadSeasonsConfig() {
+  try {
+    const group = await APP.getYAML('platform/config/group.yaml');
+    if (group && Array.isArray(group.seasons) && group.seasons.length) {
+      seasonsConfig = group.seasons.map(s => ({
+        id: String(s.id),
+        label: s.label || `시즌 ${s.id}`,
+        sublabel: s.sublabel || '',
+        archived: s.archived === true || s.archived === 'true',
+      }));
+    }
+    if (group && group.current_season) currentSeason = String(group.current_season);
+  } catch {}
+
+  // URL/storage override
+  const urlSeason = new URLSearchParams(window.location.search).get('season');
+  if (urlSeason) {
+    currentSeason = String(urlSeason);
+  } else {
+    const stored = localStorage.getItem('finops:season');
+    if (stored) currentSeason = String(stored);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   await APP.init();
 
@@ -13,6 +45,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.location.href = 'index.html';
     return;
   }
+
+  await loadSeasonsConfig();
 
   const params = new URLSearchParams(window.location.search);
   const week = params.get('week');
@@ -25,10 +59,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   document.getElementById('problem-loading').style.display = 'block';
-  document.getElementById('page-title').textContent = `Week ${week} Problems`;
+  const seasonMeta = seasonsConfig.find(s => s.id === currentSeason);
+  document.getElementById('page-title').textContent = `${seasonMeta ? seasonMeta.label : '시즌 ' + currentSeason} · Week ${week}`;
 
   try {
-    const assignment = await APP.getJSON(`members/${username}/problems/week-${week.padStart(2, '0')}/assignment.json`);
+    const assignment = await APP.getJSON(`members/${username}/season-${currentSeason}/problems/week-${week.padStart(2, '0')}/assignment.json`);
     const level = assignment.level;
 
     const levelBadge = document.getElementById('level-badge');
@@ -55,57 +90,126 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('problem-loading').style.display = 'none';
     document.getElementById('problem-content').style.display = 'block';
   } catch (e) {
+    const seasonNote = seasonMeta && seasonMeta.archived
+      ? '이 시즌은 아카이브 상태이며 문제 데이터가 삭제되었을 수 있습니다.'
+      : '이 주차에 아직 문제가 배정되지 않았습니다. 프로젝트형 주차이거나, 스터디 리더가 곧 생성할 예정입니다.';
     document.getElementById('problem-loading').innerHTML = `
-      <div class="alert alert-error">
-        Failed to load problems: ${escapeHtml(e.message)}<br>
-        <small>이 주차에 배정된 문제가 없거나, 아직 생성되지 않았을 수 있습니다.</small>
+      <div class="info-banner" style="background:var(--bg);border-color:var(--border);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <div>
+          <div style="font-weight:600;color:var(--text);margin-bottom:4px;">배정된 문제가 없습니다</div>
+          <div>${escapeHtml(seasonNote)}</div>
+          <div style="margin-top:10px;"><a href="problems.html?season=${currentSeason}" class="btn btn-sm">← 주차 목록으로</a></div>
+        </div>
       </div>
     `;
   }
 });
 
+function buildSeasonSelector(username) {
+  const el = document.getElementById('season-selector');
+  if (!el) return;
+  el.innerHTML = seasonsConfig.map(s => {
+    const isActive = String(currentSeason) === s.id;
+    const tag = s.archived
+      ? '<span class="badge badge-archived">아카이브</span>'
+      : '<span class="badge badge-current">진행 중</span>';
+    return `
+      <div class="season-chip ${isActive ? 'active' : ''} ${s.archived ? 'archived' : ''}"
+           data-season="${s.id}" onclick="selectSeason('${s.id}')">
+        <div class="season-chip-icon">S${s.id}</div>
+        <div class="season-chip-text">
+          <span class="season-chip-label">${escapeHtml(s.label)} ${tag}</span>
+          <span class="season-chip-sub">${escapeHtml(s.sublabel || '')}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function selectSeason(seasonId) {
+  if (String(currentSeason) === String(seasonId)) return;
+  currentSeason = String(seasonId);
+  try { localStorage.setItem('finops:season', currentSeason); } catch {}
+  const url = new URL(window.location.href);
+  url.searchParams.set('season', currentSeason);
+  window.history.replaceState({}, '', url);
+  showWeekSelector(APP.getUsername());
+}
+
 async function showWeekSelector(username) {
   const GRADIENTS = ['grad-teal', 'grad-blue', 'grad-purple', 'grad-orange', 'grad-pink', 'grad-green', 'grad-teal', 'grad-blue'];
 
   document.getElementById('page-title').textContent = 'Problems';
+  buildSeasonSelector(username);
 
-  // Load week configs
+  // Load week configs for the current season
   let weeks = [];
+  const configDir = `platform/config/weeks/season-${currentSeason}`;
   try {
-    const weekFiles = await APP.listDir('platform/config/weeks');
+    const weekFiles = await APP.listDir(configDir);
     for (const f of weekFiles) {
       if (f.name && f.name.endsWith('.yaml')) {
-        try { weeks.push(await APP.getYAML(`platform/config/weeks/${f.name}`)); } catch {}
+        try { weeks.push(await APP.getYAML(`${configDir}/${f.name}`)); } catch {}
       }
     }
   } catch {}
 
-  // Check which weeks have problems for this user
+  // Sort by week number
+  weeks.sort((a, b) => (a.week || 0) - (b.week || 0));
+
   const cardsEl = document.getElementById('week-cards');
+  const seasonMeta = seasonsConfig.find(s => s.id === currentSeason);
+
+  // Season banner
+  const banner = document.getElementById('season-banner-text');
+  if (banner) {
+    if (seasonMeta && seasonMeta.archived) {
+      banner.innerHTML = `<strong>${escapeHtml(seasonMeta.label)} — 아카이브</strong> · 이전 시즌 자료입니다. 새 제출/채점은 진행되지 않습니다.`;
+    } else {
+      banner.innerHTML = `<strong>${escapeHtml(seasonMeta ? seasonMeta.label : '시즌 ' + currentSeason)}</strong> · ${escapeHtml(seasonMeta ? seasonMeta.sublabel : '')}`;
+    }
+  }
 
   if (weeks.length === 0) {
-    // Fallback: show week 1-8
-    for (let i = 1; i <= 8; i++) weeks.push({ week: i, level: 'L1', description: `Week ${i}`, num_problems: 3 });
+    cardsEl.innerHTML = `
+      <div class="empty-state" style="grid-column:1/-1;">
+        <h3>이 시즌은 아직 주차가 등록되지 않았습니다</h3>
+        <p>스터디 리더가 <code>platform/config/weeks/season-${currentSeason}/week-NN.yaml</code> 을 추가하면 여기 표시됩니다.</p>
+      </div>
+    `;
+    document.getElementById('week-selector').style.display = 'block';
+    return;
   }
 
   cardsEl.innerHTML = weeks.map((w, i) => {
     const grad = GRADIENTS[((w.week || i + 1) - 1) % GRADIENTS.length];
     const weekNum = w.week || (i + 1);
+    const isProjectWeek = !w.level; // season 2 has no levels
+    const badge = w.level || 'PJ';
+    const titleText = w.title || w.description || 'FinOps Week';
+    const subText = w.title && w.description ? w.description : (w.deliverable ? `산출물: ${w.deliverable}` : '');
     return `
-      <a href="problems.html?week=${weekNum}" class="card card-gradient" style="text-decoration:none;color:inherit;">
+      <a href="problems.html?week=${weekNum}&season=${currentSeason}" class="card card-gradient" style="text-decoration:none;color:inherit;">
         <div class="card-cover ${grad}">
-          <span class="cover-badge">${w.level || 'L1'}</span>
+          <span class="cover-badge">${escapeHtml(badge)}</span>
           <div class="cover-label">Week ${weekNum}</div>
-          <div class="cover-title">${escapeHtml(w.description || 'FinOps Problem')}</div>
+          <div class="cover-title">${escapeHtml(titleText)}</div>
         </div>
         <div class="card-meta">
-          <span class="meta-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-            ${w.num_problems || 3} problems
-          </span>
+          ${isProjectWeek ? `
+            <span class="meta-item" style="font-size:12px;color:var(--text-muted);">
+              ${escapeHtml(subText || '프로젝트형 주차')}
+            </span>
+          ` : `
+            <span class="meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+              ${w.num_problems || 3} problems
+            </span>
+          `}
         </div>
         <div class="card-actions">
-          <span style="font-size:13px;color:var(--text-muted);">View problems</span>
+          <span style="font-size:13px;color:var(--text-muted);">${isProjectWeek ? '주차 상세' : 'View problems'}</span>
           <span class="arrow">&rarr;</span>
         </div>
       </a>
@@ -117,7 +221,7 @@ async function showWeekSelector(username) {
 
 async function loadScenario(week, username, scenarioId, tabEl) {
   const weekStr = String(week).padStart(2, '0');
-  const basePath = `members/${username}/problems/week-${weekStr}/${scenarioId}`;
+  const basePath = `members/${username}/season-${currentSeason}/problems/week-${weekStr}/${scenarioId}`;
 
   if (tabEl) {
     document.querySelectorAll('#scenario-tabs .tab').forEach(t => t.classList.remove('active'));

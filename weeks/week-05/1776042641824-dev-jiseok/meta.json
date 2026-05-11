@@ -8,5 +8,6 @@
   "description": "5주차 L2 문제 풀이 참고 자료 — Lambda/Fargate/ElastiCache/Kinesis/SQS 최적화 + 단위경제 분석",
   "files": [
     "study-materials.md"
-  ]
+  ],
+  "season": "1"
 }

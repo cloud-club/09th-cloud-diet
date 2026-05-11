@@ -8,5 +8,6 @@
   "description": "시즌 1에서 사용한 AI FinOps 스터디 오리엔테이션 자료. 시즌 2 Week 1 공통 도메인 지식 다지기용 참고 자료.",
   "files": [
     "AI FinOps 스터디 소개.pdf"
-  ]
+  ],
+  "season": "1"
 }

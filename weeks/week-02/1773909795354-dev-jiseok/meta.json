@@ -8,5 +8,6 @@
   "description": "https://aws.amazon.com/ko/blogs/tech/efficient-ebs-monitoring-with-mcp-at-scale/",
   "files": [
     "content.md"
-  ]
+  ],
+  "season": "1"
 }

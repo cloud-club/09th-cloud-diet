@@ -9,7 +9,8 @@
     "description": "시즌 1에서 사용한 AI FinOps 스터디 오리엔테이션 자료. 시즌 2 Week 1 공통 도메인 지식 다지기용 참고 자료.",
     "files": [
       "AI FinOps 스터디 소개.pdf"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1778803260000-dev-jiseok",
@@ -21,7 +22,8 @@
     "description": "시즌 1에서 사용한 FinOps 핵심 가이드 + AI 방법론 자료. Week 1 도메인 지식 다지기 참고용.",
     "files": [
       "FinOps 가이드 및 AI 방법론.pdf"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1778803320000-dev-jiseok",
@@ -33,7 +35,8 @@
     "description": "시즌 1 플랫폼이 사용한 시뮬레이션 문제 자동 출제 AI 설명 자료. 시즌 2 기법 응용 시 참고용.",
     "files": [
       "FinOps 시뮬레이션 출제 AI.pdf"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1773909178911-dev-jiseok",
@@ -45,7 +48,8 @@
     "description": "https://velog.io/@cjose2/AWS-Lambda-Power-Tuning-활용한-람다-함수-최적화",
     "files": [
       "content.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1773909708500-dev-jiseok",
@@ -57,7 +61,8 @@
     "description": "https://aws.amazon.com/ko/blogs/compute/resize-images-on-the-fly-with-amazon-s3-aws-lambda-and-amazon-api-gateway/",
     "files": [
       "content.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1773909758877-dev-jiseok",
@@ -69,7 +74,8 @@
     "description": "https://techblog.woowahan.com/22855/#toc-0",
     "files": [
       "content.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1773909795354-dev-jiseok",
@@ -81,7 +87,8 @@
     "description": "https://aws.amazon.com/ko/blogs/tech/efficient-ebs-monitoring-with-mcp-at-scale/",
     "files": [
       "content.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1773910342605-dev-jiseok",
@@ -93,7 +100,8 @@
     "description": "",
     "files": [
       "scenarios-guide.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1774402144327-dev-jiseok",
@@ -105,7 +113,8 @@
     "description": "https://aws.amazon.com/ko/blogs/tech/aws-devops-agent-k8s-operator/",
     "files": [
       "content.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1774517618357-dev-jiseok",
@@ -117,7 +126,8 @@
     "description": "Part 1: Skills & MCP (10개)\n스킬 = Claude에게 HOW를 가르치는 것.\nMCP = Claude에게 외부 세계 ACCESS를 주는 것.\n\nAnthropic 공식\n01 — 엔트로픽 공식은 그냥 이거 하나면 충분합니다.\nhttps://github.com/anthropics/skills\n\nDev & Engineering\n02 — Superpowers → 20+ 실전 스킬. TDD, 디버깅, 실행 파이프라인. 96k+ stars\nhttps://github.com/obra/superpowers\n\nMarketing & SEO\n03 — Marketing Skills by Corey Haines → CRO, 카피라이팅, SEO, 이메일 시퀀스 등 20+\nhttps://github.com/coreyhaines31/marketingskills\n\n04 — Claude SEO → 사이트 전체 감사, 스키마 검증. 12개 하위 스킬 https://github.com/AgriciDaniel/claude-seo\n\n05— Brand Guidelines → 브랜드를 스킬로 인코딩. 모든 곳에 자동 적용 https://github.com/anthropics/skills/tree/main/skills/brand-guidelines\n\n:brain: Knowledge & Learning\n06 — NotebookLM Integration → Claude + NotebookLM 연결.\n요약, 마인드맵, 플래시카드\nhttps://github.com/PleasePrompto/notebooklm-skill\n\n07 — Obsidian Skills → Obsidian CEO가 만든 스킬.\n자동 태깅, 자동 링킹\nhttps://github.com/kepano/obsidian-skills\n\n:white_check_mark: 자주 쓰는 MCP 서버 3개\n08 — Tavily → AI 에이전트용 검색엔진. 파란 링크가 아니라 구조화된 데이터.\nsearch, extract, crawl, map 4개 도구\nhttps://github.com/tavily-ai/tavily-mcp\n\n09 — Context7 → 최신 라이브러리 문서를 LLM 컨텍스트에 주입.\n환각 API 제거. \"use context7\" 한 줄이면 끝\nhttps://github.com/upstash/context7\n\n10 — Task Master\nAI → PRD 투입 → 의존성 있는 구조화 태스크 → Claude가 하나씩 실행.\nhttps://github.com/eyaltoledano/claude-task-master\n----\n\nPart 2: GitHub Repos (11개)\nAgent Frameworks\n11 — OpenClaw\n바이럴 AI 에이전트. 자체 스킬 작성. 210k+ stars\nhttps://github.com/openclaw/openclaw\n\n12 — LangGraph\n그래프 기반 에이전트. 멀티에이전트 오케스트레이션. 26.8k stars\nhttps://github.com/langchain-ai/langgraph\n\n13 — OWL\n멀티에이전트 협력. GAIA 벤치마크 1위\nhttps://github.com/camel-ai/owl\n\nSearch & Data\n14 — GPT Researcher\n자율 리서치 → 보고서 자동 생성\nhttps://github.com/assafelovic/gpt-researcher\n\n15 — Firecrawl\n웹사이트 → LLM 학습용 데이터 변환\nhttps://github.com/firecrawl/firecrawl\n\n16 — Vanna AI\n자연어 → SQL 변환\nhttps://github.com/vanna-ai/vanna\n\nDev Tools\n17 — Codebase Memory MCP\n코드베이스 → 영구 지식 그래프\nhttps://github.com/DeusData/codebase-memory-mcp\n\n18 — Spec Kit (GitHub)\n스펙 기반 개발. 스펙 작성 → AI가 코드 생성. 50k+ stars\nhttps://github.com/github/spec-kit\n\nCurated Collections\n19 — Awesome Claude Skills → 22k+ stars\nhttps://github.com/travisvn/awesome-claude-skills\n\n20 — Awesome Agent\n100+ 오픈소스 에이전트 도구\nhttps://github.com/kyrolabs/awesome-agents\n\n21 — MAGI//ARCHIVE\n매일 업데이트되는 AI 레포 피드\nhttps://tom-doerr.github.io/repo_posts/\n\n---\n\nPart 3: 주목할 신규 GitHub 레포(6개)\n\n Agent Orchestration & Multi-Agent\n22 — gstack\nClaude Code를 가상 엔지니어링 팀으로\nhttps://github.com/garrytan/gstack\n\n23 — cmux\n여러 Claude 에이전트 병렬 실행\nhttps://github.com/craigsc/cmux\n\n24 — figaro\n데스크탑에서 Claude 에이전트 함대 오케스트레이션\nhttps://github.com/byt3bl33d3r/figaro\n\n25 — claude-squad\n터미널 에이전트 병렬 세션\nhttps://github.com/smtg-ai/claude-squad\n\n+ \n26 — 여러 AI 계정 스위칭 툴 및 오케스트레이션 툴\nhttps://github.com/asheshgoplani/agent-deck\n\n27 — AI 도구 현황 및 랭킹? 트랜드? 확인\nhttps://www.vibeindex.ai/",
     "files": [
       "content.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1774525918240-dev-jiseok",
@@ -129,7 +139,8 @@
     "description": "박진형님 이라고 클로드 쪽에서 유명하게 사용하시는 걸로 유명하신 분인데 클로드 행사에서 발표자료 공유드립니다. 참고 하면 좋을 내용이 많아보여서 공유드려요!",
     "files": [
       "[박진형] 멀티 LLM을 다룰 수 있는 궁극의 MCP 만들어보기 (1)_compressed.pdf"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1774832532097-dev-jiseok",
@@ -141,7 +152,8 @@
     "description": "3주차 L1 문제 풀이에 도움이 되는 AWS 비용 최적화 참고 자료 모음",
     "files": [
       "study-materials.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1774836520999-dev-jiseok",
@@ -153,7 +165,8 @@
     "description": "https://github.com/aws-samples/kr-tech-blog-sample-code",
     "files": [
       "content.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1774836648644-dev-jiseok",
@@ -165,7 +178,8 @@
     "description": "https://github.com/paperclipai/paperclip",
     "files": [
       "content.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1775107493466-dev-jiseok",
@@ -177,7 +191,8 @@
     "description": "https://ministack.org\n\nhttps://news.hada.io/topic?id=28106&utm_source=slack&utm_medium=bot&utm_campaign=T0A84RHMM",
     "files": [
       "content.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1775128042489-dev-jiseok",
@@ -189,7 +204,8 @@
     "description": "https://github.com/drona23/claude-token-efficient\n\nhttps://github.com/rtk-ai/rtk",
     "files": [
       "content.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1775638988033-dev-jiseok",
@@ -201,7 +217,8 @@
     "description": "4주차 L1 심화 문제 풀이에 도움이 되는 참고 자료 (3주차 자료와 중복 없음)",
     "files": [
       "study-materials.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1775734985572-dev-jiseok",
@@ -213,7 +230,8 @@
     "description": "https://aws.amazon.com/ko/blogs/tech/yanolja-aiops-strands-agent-on-agentcore/",
     "files": [
       "content.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1776042641824-dev-jiseok",
@@ -225,7 +243,8 @@
     "description": "5주차 L2 문제 풀이 참고 자료 — Lambda/Fargate/ElastiCache/Kinesis/SQS 최적화 + 단위경제 분석",
     "files": [
       "study-materials.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1776043401794-dev-jiseok",
@@ -237,7 +256,8 @@
     "description": "6주차 L2 심화 참고 자료 — 태그 거버넌스, 탄력성 진단, tags_inventory 분석법",
     "files": [
       "study-materials.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1776761328802-wsxchoi",
@@ -249,7 +269,8 @@
     "description": "",
     "files": [
       "study-materials.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1776908018766-dev-jiseok",
@@ -261,7 +282,8 @@
     "description": "7주차 L3 참고 자료 — RI/SP 최적화, NAT/VPC 네트워크 비용, CUR 분석, 알림 생성",
     "files": [
       "study-materials.md"
-    ]
+    ],
+    "season": "1"
   },
   {
     "id": "1776908018767-dev-jiseok",
@@ -273,6 +295,7 @@
     "description": "8주차 최종 실전 테스트 참고 자료 — 전체 분석 프레임워크, 발표 가이드, 주차별 핵심 복습",
     "files": [
       "study-materials.md"
-    ]
+    ],
+    "season": "1"
   }
 ]

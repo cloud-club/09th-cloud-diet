@@ -1,0 +1,10 @@
+# Season 2 — Week 6
+season: 2
+week: 6
+level: null
+num_problems: 0
+category: "shift-left"
+reveal_date: "2026-06-15"
+title: "Shift Left — 배포 전 자동 비용 검증"
+description: "배포된 인프라 분석 → 배포 전 PR 단계 비용 검증으로 이동. GitHub Actions PR 자동 비용 코멘트, Terraform 수정 PR 자동 생성, OPA/Conftest 정책 검증."
+deliverable: "PR 봇 또는 /review-tf 모드"

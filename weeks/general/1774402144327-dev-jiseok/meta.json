@@ -8,5 +8,6 @@
   "description": "https://aws.amazon.com/ko/blogs/tech/aws-devops-agent-k8s-operator/",
   "files": [
     "content.md"
-  ]
+  ],
+  "season": "1"
 }

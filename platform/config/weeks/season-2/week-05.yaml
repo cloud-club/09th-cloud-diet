@@ -1,0 +1,10 @@
+# Season 2 — Week 5
+season: 2
+week: 5
+level: null
+num_problems: 0
+category: "ai-workload"
+reveal_date: "2026-06-08"
+title: "AI 워크로드(L4) 시나리오 추가"
+description: "Bedrock Provisioned Throughput 과잉, SageMaker Endpoint Auto Scaling 미설정, GPU 인스턴스 야간 미정지, LLM API 토큰 과금 vs 자체 호스팅 TCO, 임베딩 캐시 부재 등."
+deliverable: "AI 워크로드 패턴 카탈로그"

@@ -250,54 +250,84 @@ const APP = {
 // ── Simple YAML parser (handles our flat configs) ──
 
 function parseSimpleYAML(text) {
+  // Supports: top-level scalars, top-level lists (of scalars or objects),
+  // and lists of multi-line objects (each "- key: val" followed by indented "  key2: val2" lines).
+  const coerce = (raw) => {
+    const v = String(raw).trim().replace(/^["']|["']$/g, '');
+    if (v === '' || v === 'null') return null;
+    if (v === 'true') return true;
+    if (v === 'false') return false;
+    if (/^-?\d+$/.test(v)) return parseInt(v, 10);
+    if (/^-?\d+\.\d+$/.test(v)) return parseFloat(v);
+    return v;
+  };
+
   const result = {};
-  let currentKey = null;
-  let currentList = null;
+  let currentKey = null;        // key whose value is a list/object being filled
+  let currentListItem = null;   // when inside a list of objects, the object being built
+  let listItemIndent = -1;      // indentation level of "- " for the current list
+  let listItemBodyIndent = -1;  // indentation of nested keys inside the current list item
 
-  for (const line of text.split('\n')) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('#')) continue;
+  for (const rawLine of text.split('\n')) {
+    if (!rawLine.trim() || rawLine.trim().startsWith('#')) continue;
 
-    // List item
+    const indent = rawLine.match(/^(\s*)/)[1].length;
+    const trimmed = rawLine.trim();
+
+    // List item start: "- key: val" or "- value"
     if (trimmed.startsWith('- ')) {
-      if (currentList !== null) {
-        const val = trimmed.slice(2).trim().replace(/^["']|["']$/g, '');
-        // Check if it's a key-value object
-        if (val.includes(':')) {
-          const obj = {};
-          // Parse inline mapping
-          const parts = trimmed.slice(2).trim();
-          for (const part of parts.split(/,\s*/)) {
-            const [k, ...v] = part.split(':');
-            if (k && v.length) {
-              obj[k.trim()] = v.join(':').trim().replace(/^["']|["']$/g, '');
-            }
-          }
-          if (Object.keys(obj).length > 0) {
-            result[currentKey].push(obj);
-          }
-        } else {
-          result[currentKey].push(val);
+      const body = trimmed.slice(2);
+
+      // Ensure parent key holds an array
+      if (currentKey === null) continue;
+      if (!Array.isArray(result[currentKey])) result[currentKey] = [];
+
+      listItemIndent = indent;
+      listItemBodyIndent = -1; // will be set on first nested line
+
+      if (body.includes(':')) {
+        // First key of an object item
+        const m = body.match(/^([\w_-]+)\s*:\s*(.*)$/);
+        if (m) {
+          currentListItem = {};
+          const val = m[2].trim();
+          if (val) currentListItem[m[1]] = coerce(val);
+          // If the same line also has inline "k1: v1, k2: v2" comma form, parse extras
+          // (kept conservative — most YAML won't need this)
+          result[currentKey].push(currentListItem);
+          continue;
         }
       }
+      // Scalar item
+      result[currentKey].push(coerce(body));
+      currentListItem = null;
       continue;
     }
 
-    // Key: value
-    const match = trimmed.match(/^(\w[\w_]*)\s*:\s*(.*)/);
-    if (match) {
-      const key = match[1];
-      const val = match[2].trim().replace(/^["']|["']$/g, '');
+    // Nested key inside the current list item: "  key: value"
+    if (currentListItem !== null && indent > listItemIndent) {
+      if (listItemBodyIndent === -1) listItemBodyIndent = indent;
+      if (indent >= listItemBodyIndent) {
+        const m = trimmed.match(/^([\w_-]+)\s*:\s*(.*)$/);
+        if (m) { currentListItem[m[1]] = coerce(m[2]); continue; }
+      }
+    }
+
+    // Top-level / non-list "key: value"
+    const m = trimmed.match(/^([\w_-]+)\s*:\s*(.*)$/);
+    if (m) {
+      const key = m[1];
+      const val = m[2].trim();
+      // Leaving any open list item
+      currentListItem = null;
 
       if (!val) {
-        // Start of list or nested object
+        // Start a new list/object container
         result[key] = [];
         currentKey = key;
-        currentList = true;
       } else {
-        result[key] = val === 'null' ? null : val === 'true' ? true : val === 'false' ? false :
-          /^\d+$/.test(val) ? parseInt(val) : /^\d+\.\d+$/.test(val) ? parseFloat(val) : val;
-        currentList = null;
+        result[key] = coerce(val);
+        currentKey = null;
       }
     }
   }

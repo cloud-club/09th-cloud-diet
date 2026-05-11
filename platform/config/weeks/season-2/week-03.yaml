@@ -1,0 +1,10 @@
+# Season 2 — Week 3
+season: 2
+week: 3
+level: null
+num_problems: 0
+category: "cross-service"
+reveal_date: "2026-05-25"
+title: "Cross-Service 결합 낭비 분석"
+description: "Lambda↔S3 GET 폭증, EC2 종료 후 detached EBS, ECS 다운스케일 후 살아남은 ALB/NAT 같은 결합 낭비(coupled waste) 패턴 정리."
+deliverable: "cross-service analyzer 모듈"

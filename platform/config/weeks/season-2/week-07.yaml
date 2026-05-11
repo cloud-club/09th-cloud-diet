@@ -1,0 +1,10 @@
+# Season 2 — Week 7
+season: 2
+week: 7
+level: null
+num_problems: 0
+category: "multi-cloud"
+reveal_date: "2026-06-22"
+title: "멀티 클라우드 + FOCUS 1.1 표준"
+description: "AWS 단일 → GCP / Azure 확장. FOCUS 1.1로 비용 데이터 표준화, 클라우드 추상화 레이어 설계. 데이터 입력 레이어를 FOCUS 호환으로 리팩토링."
+deliverable: "FOCUS 표준 지원 + 추가 클라우드 프로토타입"

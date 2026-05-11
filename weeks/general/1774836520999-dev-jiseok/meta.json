@@ -8,5 +8,6 @@
   "description": "https://github.com/aws-samples/kr-tech-blog-sample-code",
   "files": [
     "content.md"
-  ]
+  ],
+  "season": "1"
 }

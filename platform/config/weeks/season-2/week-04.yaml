@@ -1,0 +1,10 @@
+# Season 2 — Week 4
+season: 2
+week: 4
+level: null
+num_problems: 0
+category: "live-env"
+reveal_date: "2026-06-01"
+title: "Live 환경 분석 — 정적 파일 졸업"
+description: "boto3 / AWS Cost Explorer / CUR 2.0 / Pricing API 실시간 호출로 확장. MiniStack·LocalStack 또는 실제 AWS sandbox 활용. 단가도 실시간 갱신."
+deliverable: "Live AWS 환경에서 동작하는 자기 도구"

@@ -1,10 +1,11 @@
-# Week 04 설정
-week: 4
+# Week 03 설정
+season: 1
+week: 3
 level: "L1"
 num_problems: 3
 category: null
-reveal_date: "2026-04-09"
-description: "L1 심화 — 스토리지, 네트워크, 요금 최적화"
+reveal_date: "2026-04-02"
+description: "L1 — 낭비 리소스 식별 (미사용 EC2, EBS, RDS)"
 generators:
   - tf
   - metrics

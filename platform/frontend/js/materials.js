@@ -18,6 +18,11 @@
 let materialFiles = []; // files staged for upload
 let allPosts = [];       // loaded from _index.json
 let currentFilter = 'all';
+let currentSeason = '2'; // selected season (default to current)
+let seasonsConfig = [    // fallback; replaced from group.yaml if available
+  { id: '1', label: '시즌 1', sublabel: 'AI Cloud FinOps — 시뮬레이션 문제 풀이', archived: true },
+  { id: '2', label: '시즌 2', sublabel: '클라우드 다이어트하기 고도화', archived: false },
+];
 
 const ALLOWED_EXTENSIONS = ['md', 'pdf', 'py', 'tf', 'json', 'yaml', 'yml', 'png', 'jpg', 'jpeg', 'txt', 'csv', 'hcl', 'ipynb'];
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
@@ -65,7 +70,27 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function loadMaterials() {
   try {
+    // Try to load seasons config from group.yaml (best-effort)
+    try {
+      const group = await APP.getYAML('platform/config/group.yaml');
+      if (group && Array.isArray(group.seasons) && group.seasons.length) {
+        seasonsConfig = group.seasons.map(s => ({
+          id: String(s.id),
+          label: s.label || `시즌 ${s.id}`,
+          sublabel: s.sublabel || '',
+          archived: !!s.archived,
+        }));
+      }
+      if (group && group.current_season) {
+        currentSeason = String(group.current_season);
+      }
+    } catch {}
+
     allPosts = await loadIndex();
+    // backfill: any entry without `season` is treated as season 1 (legacy)
+    allPosts.forEach(p => { if (!p.season) p.season = '1'; });
+
+    buildSeasonSelector();
     buildWeekTabs();
     renderPosts();
 
@@ -94,8 +119,44 @@ async function loadIndex() {
 // Rendering
 // ══════════════════════════════════════
 
+function buildSeasonSelector() {
+  const el = document.getElementById('season-selector');
+  if (!el) return;
+  el.innerHTML = seasonsConfig.map(s => {
+    const count = allPosts.filter(p => String(p.season) === s.id).length;
+    const isActive = String(currentSeason) === s.id;
+    const tag = s.archived
+      ? '<span class="badge badge-archived">아카이브</span>'
+      : '<span class="badge badge-current">진행 중</span>';
+    return `
+      <div class="season-chip ${isActive ? 'active' : ''} ${s.archived ? 'archived' : ''}"
+           data-season="${s.id}" onclick="selectSeason('${s.id}')">
+        <div class="season-chip-icon">S${s.id}</div>
+        <div class="season-chip-text">
+          <span class="season-chip-label">${escapeHtml(s.label)} ${tag} <span class="tab-count">(${count})</span></span>
+          <span class="season-chip-sub">${escapeHtml(s.sublabel || '')}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function selectSeason(seasonId) {
+  if (String(currentSeason) === String(seasonId)) return;
+  currentSeason = String(seasonId);
+  currentFilter = 'all'; // reset week filter when season changes
+  buildSeasonSelector();
+  buildWeekTabs();
+  renderPosts();
+}
+
+function postsInCurrentSeason() {
+  return allPosts.filter(p => String(p.season) === String(currentSeason));
+}
+
 function buildWeekTabs() {
-  const weeks = [...new Set(allPosts.map(p => p.week))].sort((a, b) => {
+  const seasonPosts = postsInCurrentSeason();
+  const weeks = [...new Set(seasonPosts.map(p => p.week))].sort((a, b) => {
     if (a === 'general') return 1;
     if (b === 'general') return -1;
     return parseInt(a) - parseInt(b);
@@ -103,17 +164,18 @@ function buildWeekTabs() {
 
   const tabsEl = document.getElementById('week-filter-tabs');
   let html = `
-    <div class="tab active" data-week="all" onclick="filterWeek('all', this)">
+    <div class="tab ${currentFilter === 'all' ? 'active' : ''}" data-week="all" onclick="filterWeek('all', this)">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-      All <span class="tab-count">(${allPosts.length})</span>
+      All <span class="tab-count">(${seasonPosts.length})</span>
     </div>
   `;
 
   for (const w of weeks) {
-    const count = allPosts.filter(p => p.week === w).length;
+    const count = seasonPosts.filter(p => p.week === w).length;
     const label = w === 'general' ? 'General' : `Week ${w}`;
+    const isActive = String(currentFilter) === String(w);
     html += `
-      <div class="tab" data-week="${w}" onclick="filterWeek('${w}', this)">
+      <div class="tab ${isActive ? 'active' : ''}" data-week="${w}" onclick="filterWeek('${w}', this)">
         ${label} <span class="tab-count">(${count})</span>
       </div>
     `;
@@ -133,9 +195,10 @@ function renderPosts() {
   const listEl = document.getElementById('materials-list');
   const emptyEl = document.getElementById('materials-empty');
 
+  const seasonPosts = postsInCurrentSeason();
   const filtered = currentFilter === 'all'
-    ? allPosts
-    : allPosts.filter(p => String(p.week) === String(currentFilter));
+    ? seasonPosts
+    : seasonPosts.filter(p => String(p.week) === String(currentFilter));
 
   if (filtered.length === 0) {
     listEl.innerHTML = '';
@@ -161,12 +224,14 @@ function renderPosts() {
     }).join(' ');
     const moreFiles = fileCount > 4 ? `<span style="font-size:12px;color:var(--text-muted);">+${fileCount - 4} more</span>` : '';
 
+    const seasonId = String(post.season || '1');
     return `
       <div class="card" style="margin-bottom:12px;cursor:pointer;" onclick="viewPost('${post.id}')">
         <div class="card-body" style="display:flex;gap:16px;align-items:flex-start;">
           <div style="flex:1;min-width:0;">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;">
               <span style="font-weight:700;font-size:16px;">${escapeHtml(post.title)}</span>
+              <span class="badge badge-season-${seasonId}">시즌 ${seasonId}</span>
               <span class="badge" style="background:${cat.bg};color:${cat.color};">${cat.label}</span>
               <span class="badge badge-${post.week === 'general' ? 'admin' : 'L1'}">${weekLabel}</span>
             </div>
@@ -327,6 +392,7 @@ async function editPost(postId) {
   // Pre-fill the upload modal with existing data
   materialFiles = [];
   document.getElementById('mat-title').value = post.title || '';
+  document.getElementById('mat-season').value = String(post.season || '1');
   document.getElementById('mat-week').value = post.week || 'general';
   document.getElementById('mat-category').value = post.category || 'note';
   document.getElementById('mat-description').value = post.description || '';
@@ -392,6 +458,7 @@ async function deletePost(postId) {
 
     // Update local state
     allPosts = allPosts.filter(p => p.id !== postId);
+    buildSeasonSelector();
     buildWeekTabs();
     renderPosts();
     hideViewerModal();
@@ -409,6 +476,7 @@ async function deletePost(postId) {
 function showUploadModal() {
   materialFiles = [];
   document.getElementById('mat-title').value = '';
+  document.getElementById('mat-season').value = String(currentSeason);
   document.getElementById('mat-week').value = 'general';
   document.getElementById('mat-category').value = 'note';
   document.getElementById('mat-description').value = '';
@@ -506,6 +574,7 @@ async function uploadMaterial() {
   const btn = document.getElementById('upload-btn');
 
   const title = document.getElementById('mat-title').value.trim();
+  const season = document.getElementById('mat-season').value;
   const week = document.getElementById('mat-week').value;
   const category = document.getElementById('mat-category').value;
   const description = document.getElementById('mat-description').value.trim();
@@ -541,6 +610,7 @@ async function uploadMaterial() {
       author: username,
       date: now,
       week,
+      season: String(season || currentSeason || '2'),
       category,
       description,
       files: fileNames,
@@ -634,7 +704,11 @@ async function uploadMaterial() {
       if (idx >= 0) allPosts[idx] = meta;
     } else {
       allPosts.push(meta);
+      // Switch to the season the user uploaded into, so they see their new post
+      currentSeason = String(meta.season);
+      currentFilter = String(meta.week);
     }
+    buildSeasonSelector();
     buildWeekTabs();
     renderPosts();
     hideUploadModal();

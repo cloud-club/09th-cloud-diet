@@ -433,6 +433,92 @@ a:hover { color: var(--primary-dark); }
 .badge-revealed { background: var(--green-light); color: #087f5b; }
 .badge-pending { background: var(--orange-light); color: #e67700; }
 .badge-submitted { background: #dbeafe; color: #1d4ed8; }
+.badge-season-1 { background: #f0f1f5; color: #5f6577; }
+.badge-season-2 { background: linear-gradient(135deg, #eef1ff, #f0eaff); color: var(--primary-dark); }
+.badge-archived { background: var(--bg); color: var(--text-muted); border: 1px solid var(--border); }
+.badge-current { background: var(--green-light); color: #087f5b; }
+
+/* ── Season Selector (segmented, prominent) ── */
+.season-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.season-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  min-width: 200px;
+}
+
+.season-chip:hover {
+  border-color: #c5cce6;
+  box-shadow: var(--shadow-sm);
+}
+
+.season-chip.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(76,110,245,0.10);
+}
+
+.season-chip.active.archived {
+  border-color: #b8bccd;
+  background: var(--bg);
+  box-shadow: 0 0 0 3px rgba(95,101,119,0.08);
+}
+
+.season-chip-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4c6ef5, #7950f2);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.season-chip.archived .season-chip-icon {
+  background: linear-gradient(135deg, #9098b1, #5f6577);
+}
+
+.season-chip-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.season-chip-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.season-chip-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
+}
 
 /* ── Info Banner ── */
 .info-banner {
@@ -713,6 +799,12 @@ pre code { background: none; padding: 0; color: inherit; }
   gap: 16px;
 }
 
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
 /* ── Quick Action Buttons Row ── */
 .quick-actions {
   display: flex;
@@ -799,7 +891,8 @@ pre code { background: none; padding: 0; color: inherit; }
   .content { padding: 20px 16px; }
   .topbar { padding: 0 16px; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
-  .form-grid { grid-template-columns: 1fr; }
+  .form-grid, .form-grid-3 { grid-template-columns: 1fr; }
+  .season-chip { min-width: 0; flex: 1; }
   .stats-row { grid-template-columns: 1fr 1fr; }
   .tabs { flex-wrap: wrap; }
 }

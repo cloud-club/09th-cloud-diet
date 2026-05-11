@@ -1,6 +1,117 @@
 /**
- * scores.js — Scores display and leaderboard
+ * scores.js — Scores display and leaderboard (season-aware)
  */
+
+const SEASON_FALLBACK = [
+  { id: '1', label: '시즌 1', sublabel: 'AI Cloud FinOps — 시뮬레이션 문제 풀이', archived: true },
+  { id: '2', label: '시즌 2', sublabel: '클라우드 다이어트하기 고도화', archived: false },
+];
+let seasonsConfig = SEASON_FALLBACK;
+let currentSeason = '2';
+
+async function loadSeasonsConfig() {
+  try {
+    const group = await APP.getYAML('platform/config/group.yaml');
+    if (group && Array.isArray(group.seasons) && group.seasons.length) {
+      seasonsConfig = group.seasons.map(s => ({
+        id: String(s.id),
+        label: s.label || `시즌 ${s.id}`,
+        sublabel: s.sublabel || '',
+        archived: s.archived === true || s.archived === 'true',
+      }));
+    }
+    if (group && group.current_season) currentSeason = String(group.current_season);
+  } catch {}
+
+  const urlSeason = new URLSearchParams(window.location.search).get('season');
+  if (urlSeason) currentSeason = String(urlSeason);
+  else {
+    const stored = localStorage.getItem('finops:season');
+    if (stored) currentSeason = String(stored);
+  }
+}
+
+function buildSeasonSelector() {
+  const el = document.getElementById('season-selector');
+  if (!el) return;
+  el.innerHTML = seasonsConfig.map(s => {
+    const isActive = String(currentSeason) === s.id;
+    const tag = s.archived
+      ? '<span class="badge badge-archived">아카이브</span>'
+      : '<span class="badge badge-current">진행 중</span>';
+    return `
+      <div class="season-chip ${isActive ? 'active' : ''} ${s.archived ? 'archived' : ''}"
+           data-season="${s.id}" onclick="selectSeason('${s.id}')">
+        <div class="season-chip-icon">S${s.id}</div>
+        <div class="season-chip-text">
+          <span class="season-chip-label">${escapeHtml(s.label)} ${tag}</span>
+          <span class="season-chip-sub">${escapeHtml(s.sublabel || '')}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function selectSeason(seasonId) {
+  if (String(currentSeason) === String(seasonId)) return;
+  currentSeason = String(seasonId);
+  try { localStorage.setItem('finops:season', currentSeason); } catch {}
+  const url = new URL(window.location.href);
+  url.searchParams.set('season', currentSeason);
+  window.history.replaceState({}, '', url);
+  loadScores();
+}
+
+async function loadScores() {
+  const loadingEl = document.getElementById('scores-loading');
+  const contentEl = document.getElementById('scores-content');
+  loadingEl.style.display = '';
+  loadingEl.innerHTML = '<div class="spinner"></div><p>Loading scores...</p>';
+  contentEl.style.display = 'none';
+
+  const scoresRoot = `scores/season-${currentSeason}`;
+  let weeks = [];
+  try {
+    const scoreDirs = await APP.listDir(scoresRoot);
+    weeks = (Array.isArray(scoreDirs) ? scoreDirs : [])
+      .filter(d => d.type === 'dir' && d.name.startsWith('week-'))
+      .map(d => parseInt(d.name.replace('week-', '')))
+      .sort((a, b) => b - a);
+  } catch {}
+
+  buildSeasonSelector();
+
+  const seasonMeta = seasonsConfig.find(s => s.id === currentSeason);
+
+  if (weeks.length === 0) {
+    contentEl.style.display = 'block';
+    loadingEl.style.display = 'none';
+    document.getElementById('week-tabs').innerHTML = '';
+    document.getElementById('leaderboard-body').innerHTML = `
+      <tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:32px;">
+        ${seasonMeta && seasonMeta.archived
+          ? '이 시즌은 아카이브 상태이며 채점 데이터가 보존되지 않았습니다.'
+          : '아직 이 시즌의 채점 결과가 없습니다. 정답 공개 후 표시됩니다.'}
+      </td></tr>
+    `;
+    document.getElementById('my-scores-card').style.display = 'none';
+    return;
+  }
+
+  const tabsEl = document.getElementById('week-tabs');
+  tabsEl.innerHTML = weeks.map((w, i) => `
+    <div class="tab ${i === 0 ? 'active' : ''}" data-week="${w}"
+         onclick="loadWeekScores(${w}, this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/></svg>
+      Week ${w}
+    </div>
+  `).join('');
+
+  await loadWeekScores(weeks[0]);
+
+  loadingEl.style.display = 'none';
+  contentEl.style.display = 'block';
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
   await APP.init();
@@ -10,41 +121,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  try {
-    const scoreDirs = await APP.listDir('scores');
-    const weeks = scoreDirs
-      .filter(d => d.type === 'dir' && d.name.startsWith('week-'))
-      .map(d => parseInt(d.name.replace('week-', '')))
-      .sort((a, b) => b - a);
-
-    if (weeks.length === 0) {
-      document.getElementById('scores-loading').innerHTML = `
-        <div class="empty-state">
-          <h3>No scores yet</h3>
-          <p>정답이 공개되고 채점이 완료되면 여기에 표시됩니다.</p>
-        </div>
-      `;
-      return;
-    }
-
-    const tabsEl = document.getElementById('week-tabs');
-    tabsEl.innerHTML = weeks.map((w, i) => `
-      <div class="tab ${i === 0 ? 'active' : ''}" data-week="${w}"
-           onclick="loadWeekScores(${w}, this)">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/></svg>
-        Week ${w}
-      </div>
-    `).join('');
-
-    await loadWeekScores(weeks[0]);
-
-    document.getElementById('scores-loading').style.display = 'none';
-    document.getElementById('scores-content').style.display = 'block';
-  } catch (e) {
-    document.getElementById('scores-loading').innerHTML = `
-      <div class="alert alert-error">Failed to load scores: ${escapeHtml(e.message)}</div>
-    `;
-  }
+  await loadSeasonsConfig();
+  await loadScores();
 });
 
 async function loadWeekScores(week, tabEl) {
@@ -54,9 +132,10 @@ async function loadWeekScores(week, tabEl) {
   }
 
   const weekStr = `week-${String(week).padStart(2, '0')}`;
+  const scoresRoot = `scores/season-${currentSeason}`;
 
   try {
-    const summary = await APP.getJSON(`scores/${weekStr}/summary.json`);
+    const summary = await APP.getJSON(`${scoresRoot}/${weekStr}/summary.json`);
     const leaderboard = summary.leaderboard || [];
 
     const tbody = document.getElementById('leaderboard-body');
@@ -94,7 +173,7 @@ async function loadWeekScores(week, tabEl) {
     // Load current user's detailed scores
     const username = APP.getUsername();
     try {
-      const myScores = await APP.getJSON(`scores/${weekStr}/${username}.json`);
+      const myScores = await APP.getJSON(`${scoresRoot}/${weekStr}/${username}.json`);
       renderMyScores(myScores);
     } catch {
       document.getElementById('my-scores-card').style.display = 'none';
