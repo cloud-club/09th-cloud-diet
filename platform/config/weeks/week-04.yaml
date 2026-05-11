@@ -1,0 +1,18 @@
+# Week 04 설정
+week: 4
+level: "L1"
+num_problems: 3
+category: null
+reveal_date: "2026-04-09"
+description: "L1 심화 — 스토리지, 네트워크, 요금 최적화"
+generators:
+  - tf
+  - metrics
+  - cost_report
+scoring_weights:
+  schema: 1.0
+  resource: 1.0
+  savings: 1.0
+  terraform: 1.0
+  economics: 0.0
+  alerts: 0.0

@@ -1,0 +1,9 @@
+# FinOps 스터디 그룹 설정 (시즌 2)
+group:
+  name: "09th-cloud-diet"
+  description: "Cloud Club 9기 시즌 2 — 클라우드 다이어트하기 고도화"
+  repo: "cloud-club/09th-cloud-diet"
+
+# 관리자 목록 (GitHub username)
+admins:
+  - dev-jiseok

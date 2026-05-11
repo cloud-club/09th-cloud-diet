@@ -1,0 +1,27 @@
+# 스터디 멤버 목록 (시즌 2)
+# GitHub username으로 등록
+members:
+  - username: dev-jiseok
+    name: "이지석"
+    joined: "2026-05-11"
+  - username: seoyoungleeme
+    name: "이서영(E)"
+    joined: "2026-05-11"
+  - username: 7910trio
+    name: "이서영(I)"
+    joined: "2026-05-11"
+  - username: jud1thDev
+    name: "정유정"
+    joined: "2026-05-11"
+  - username: do-dop
+    name: "박도연"
+    joined: "2026-05-11"
+  - username: m1cks
+    name: "인승진"
+    joined: "2026-05-11"
+  - username: weeeeestern
+    name: "박은서"
+    joined: "2026-05-11"
+  - username: juanxiu
+    name: "김연수"
+    joined: "2026-05-11"

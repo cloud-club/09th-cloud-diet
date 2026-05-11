@@ -1,0 +1,12 @@
+{
+  "id": "1778803320000-dev-jiseok",
+  "title": "FinOps 시뮬레이션 출제 AI",
+  "author": "dev-jiseok",
+  "date": "2026-05-11T00:02:00.000Z",
+  "week": "1",
+  "category": "presentation",
+  "description": "시즌 1 플랫폼이 사용한 시뮬레이션 문제 자동 출제 AI 설명 자료. 시즌 2 기법 응용 시 참고용.",
+  "files": [
+    "FinOps 시뮬레이션 출제 AI.pdf"
+  ]
+}
