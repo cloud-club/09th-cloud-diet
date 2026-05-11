@@ -1,7 +1,7 @@
 # Week 6 — Shift Left (PR 사전 차단)
 
-> 이 문서는 [시즌 2 시나리오 카탈로그 v1.0](https://github.com/cloud-club/09th-cloud-diet/blob/main/docs/SCENARIOS_S2.md)의 **Week 6** 섹션입니다.
-> 각 시나리오는 시즌 1과 동일한 6개 차원 (상황 / 청구서 모양 / 왜 안 보이는지 / 가격 수식 / 탐지 / 해결 후 변화)으로 구성되었습니다.
+> 이 문서는 [시즌 2 시나리오 카탈로그 v1.0 (상세본)](https://github.com/cloud-club/09th-cloud-diet/blob/main/docs/SCENARIOS_S2_DETAILED.md)의 **Week 6** 섹션입니다.
+> 각 시나리오는 시즌 1과 동일한 6개 차원으로 구성됨. 전체 47선을 표 형태로 빠르게 훑으려면 [요약본](https://github.com/cloud-club/09th-cloud-diet/blob/main/docs/SCENARIOS_S2.md) 참조.
 
 ---
 
