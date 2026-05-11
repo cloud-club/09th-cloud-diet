@@ -1,12 +1,12 @@
 {
   "id": "1778803580000-dev-jiseok",
-  "title": "시즌 2 시나리오 — Week 5",
+  "title": "시즌 2 시나리오 v1.0 — Week 5",
   "author": "dev-jiseok",
-  "date": "2026-05-11T00:13:00.000Z",
+  "date": "2026-05-11T01:00:00.000Z",
   "week": "5",
   "season": "2",
   "category": "reference",
-  "description": "AI 워크로드(L4) 시나리오 12선 — Bedrock, SageMaker, GPU, RAG, fine-tuning 비용 패턴",
+  "description": "AI 워크로드(L4) 시나리오 12선 — Bedrock / SageMaker / GPU / RAG / Fine-tuning 비용 함정",
   "files": [
     "scenarios-week5.md"
   ]
