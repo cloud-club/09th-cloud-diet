@@ -1,0 +1,288 @@
+{
+  "scenario_id": "fusion",
+  "currency": "USD",
+  "period_months": 6,
+  "_fusion_components": [
+    "L3-032",
+    "L3-033",
+    "L3-034"
+  ],
+  "monthly_data": [
+    {
+      "month_offset": 5,
+      "label": "M-5",
+      "total_spend_usd": 73161.73,
+      "waste_usd": 5639.8,
+      "waste_pct": 7.71,
+      "services": [
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 52119.99,
+          "contains_waste": false
+        },
+        {
+          "service": "Organizations",
+          "spend_usd": 14303.96,
+          "contains_waste": false
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 3102.41,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 1322.58,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 953.29,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 790.86,
+          "contains_waste": true
+        },
+        {
+          "service": "Fargate",
+          "spend_usd": 568.64,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 4,
+      "label": "M-4",
+      "total_spend_usd": 67727.91,
+      "waste_usd": 5588.41,
+      "waste_pct": 8.25,
+      "services": [
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 40040.15,
+          "contains_waste": false
+        },
+        {
+          "service": "Organizations",
+          "spend_usd": 20587.46,
+          "contains_waste": false
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 3070.86,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 1508.23,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 1104.37,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 957.36,
+          "contains_waste": true
+        },
+        {
+          "service": "Fargate",
+          "spend_usd": 459.48,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 3,
+      "label": "M-3",
+      "total_spend_usd": 68587.3,
+      "waste_usd": 5540.24,
+      "waste_pct": 8.08,
+      "services": [
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 35259.1,
+          "contains_waste": false
+        },
+        {
+          "service": "Organizations",
+          "spend_usd": 26165.37,
+          "contains_waste": false
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 3302.79,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 1402.65,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 982.99,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 924.3,
+          "contains_waste": true
+        },
+        {
+          "service": "Fargate",
+          "spend_usd": 550.1,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 2,
+      "label": "M-2",
+      "total_spend_usd": 67656.26,
+      "waste_usd": 5692.82,
+      "waste_pct": 8.41,
+      "services": [
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 43420.21,
+          "contains_waste": false
+        },
+        {
+          "service": "Organizations",
+          "spend_usd": 17105.21,
+          "contains_waste": false
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 3216.48,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 1611.18,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 890.96,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 876.8,
+          "contains_waste": true
+        },
+        {
+          "service": "Fargate",
+          "spend_usd": 535.42,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 1,
+      "label": "M-1",
+      "total_spend_usd": 69618.46,
+      "waste_usd": 5451.0,
+      "waste_pct": 7.83,
+      "services": [
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 47308.56,
+          "contains_waste": false
+        },
+        {
+          "service": "Organizations",
+          "spend_usd": 15630.65,
+          "contains_waste": false
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 3032.74,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 1588.36,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 831.93,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 732.91,
+          "contains_waste": true
+        },
+        {
+          "service": "Fargate",
+          "spend_usd": 493.31,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 0,
+      "label": "M-0",
+      "total_spend_usd": 71991.15,
+      "waste_usd": 5599.84,
+      "waste_pct": 7.78,
+      "services": [
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 39554.17,
+          "contains_waste": false
+        },
+        {
+          "service": "Organizations",
+          "spend_usd": 25064.35,
+          "contains_waste": false
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 3457.78,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 1675.41,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 1053.56,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 782.69,
+          "contains_waste": true
+        },
+        {
+          "service": "Fargate",
+          "spend_usd": 403.19,
+          "contains_waste": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "avg_monthly_total": 69790.46,
+    "avg_monthly_waste": 5585.35,
+    "waste_services": [
+      "EC2",
+      "Fargate",
+      "Lambda",
+      "RDS",
+      "S3"
+    ],
+    "pricing_note": "[L3-032] c5.xlarge $0.170/hr, r5.xlarge $0.252/hr 평균 $0.192/hr × 10대 × 730hr = $1,402/mo on-demand 과금. m5 RI 이미 선결제 완료되어 이중 비용 발생. · [L3-033] 총 compute 비용 약 $7,500/mo 중 40%($3,000)가 on-demand. SP 추가 구매 시 20-30% 할인 적용 가능하여 월 $360~$900 절감 가능. $1,200는 on-demand 초과 지출분. · [L3-034] 10개 계정 총 $15,000/mo. 개별 RI/SP 커버리지 평균 16%로 매우 낮음. Organizations 통합 시 RI/SP 풀링 + 볼륨 할인으로 20% 절감($3,000/mo) 가능."
+  }
+}

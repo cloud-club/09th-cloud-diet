@@ -1,13 +1,22 @@
 {
   "season": "2",
   "week": 2,
-  "type": "project",
+  "type": "fusion-analysis",
   "level": null,
   "scenarios": [
     "MA-003"
   ],
   "theme": "멀티 에이전트 아키텍처 도입",
-  "note": "페어 B1: 600gramSik와 비교 리뷰",
+  "ma_id": "MA-003",
+  "components": [
+    "L3-038",
+    "L1-009",
+    "L3-031"
+  ],
+  "company": "LearnHub",
+  "seed": 1483504759,
+  "line_count": 1029,
+  "expected_monthly_waste_usd": 8343.19,
   "reveal_date": "2026-05-11",
   "due_date": "2026-05-18"
 }

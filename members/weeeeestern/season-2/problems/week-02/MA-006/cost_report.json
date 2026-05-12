@@ -1,0 +1,136 @@
+{
+  "scenario_id": "fusion",
+  "currency": "USD",
+  "period_months": 6,
+  "_fusion_components": [
+    "L1-004",
+    "L1-013",
+    "L2-020",
+    "L3-040"
+  ],
+  "monthly_data": [
+    {
+      "month_offset": 5,
+      "label": "M-5",
+      "total_spend_usd": 23393.2,
+      "waste_usd": 2168.22,
+      "waste_pct": 9.27,
+      "services": [
+        {
+          "service": "RDS",
+          "spend_usd": 2580.99,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 371.12,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 4,
+      "label": "M-4",
+      "total_spend_usd": 22370.54,
+      "waste_usd": 2189.72,
+      "waste_pct": 9.79,
+      "services": [
+        {
+          "service": "RDS",
+          "spend_usd": 2428.7,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 326.91,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 3,
+      "label": "M-3",
+      "total_spend_usd": 22439.32,
+      "waste_usd": 2189.08,
+      "waste_pct": 9.76,
+      "services": [
+        {
+          "service": "RDS",
+          "spend_usd": 2610.82,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 252.74,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 2,
+      "label": "M-2",
+      "total_spend_usd": 22203.02,
+      "waste_usd": 2121.67,
+      "waste_pct": 9.56,
+      "services": [
+        {
+          "service": "RDS",
+          "spend_usd": 2435.75,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 340.09,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 1,
+      "label": "M-1",
+      "total_spend_usd": 22902.18,
+      "waste_usd": 2185.89,
+      "waste_pct": 9.54,
+      "services": [
+        {
+          "service": "RDS",
+          "spend_usd": 2577.4,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 362.61,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 0,
+      "label": "M-0",
+      "total_spend_usd": 22382.19,
+      "waste_usd": 2182.1,
+      "waste_pct": 9.75,
+      "services": [
+        {
+          "service": "RDS",
+          "spend_usd": 2245.37,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 361.75,
+          "contains_waste": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "avg_monthly_total": 22615.07,
+    "avg_monthly_waste": 2172.78,
+    "waste_services": [
+      "Lambda",
+      "RDS"
+    ],
+    "pricing_note": "[L1-004] Multi-AZ 추가 비용: 2 × $0.24/hr × 730hr = $350.4/mo (Single-AZ 전환 시 절감액) · [L1-013] 2 × 500 GB × (28 extra days / 30) × $0.095/GB-month ≈ 2 × 500 × 0.933 × $0.095 ≈ $266/mo · [L2-020] db.r5.xlarge = $0.48/hr. 미사용 Replica 3개 × $0.48 × 730시간 = ~$1051/mo. Replica 삭제 또는 앱에서 Reader Endpoint 사용 설정. · [L3-040] db.r6g.4xlarge $0.8064/hr vs db.r6g.large $0.1008/hr. 차이 $0.7056/hr × 730 hrs = $515/mo. RDS Proxy 추가 비용($0.015/hr per vCPU) 감안해도 순절감 발생."
+  }
+}

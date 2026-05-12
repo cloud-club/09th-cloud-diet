@@ -1,0 +1,319 @@
+{
+  "scenario_id": "fusion",
+  "currency": "USD",
+  "period_months": 6,
+  "_fusion_components": [
+    "L3-038",
+    "L1-009",
+    "L3-031"
+  ],
+  "monthly_data": [
+    {
+      "month_offset": 5,
+      "label": "M-5",
+      "total_spend_usd": 90307.43,
+      "waste_usd": 8567.95,
+      "waste_pct": 9.49,
+      "services": [
+        {
+          "service": "Organizations",
+          "spend_usd": 30461.9,
+          "contains_waste": false
+        },
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 27561.16,
+          "contains_waste": false
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 3638.69,
+          "contains_waste": true
+        },
+        {
+          "service": "EKS",
+          "spend_usd": 2010.27,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 1837.1,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 1569.26,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 1556.77,
+          "contains_waste": true
+        },
+        {
+          "service": "ECR",
+          "spend_usd": 21.23,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 4,
+      "label": "M-4",
+      "total_spend_usd": 94692.54,
+      "waste_usd": 8505.11,
+      "waste_pct": 8.98,
+      "services": [
+        {
+          "service": "Organizations",
+          "spend_usd": 44369.46,
+          "contains_waste": false
+        },
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 15439.94,
+          "contains_waste": false
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 3435.8,
+          "contains_waste": true
+        },
+        {
+          "service": "EKS",
+          "spend_usd": 1926.56,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 1889.0,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 1615.14,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 1612.46,
+          "contains_waste": true
+        },
+        {
+          "service": "ECR",
+          "spend_usd": 20.8,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 3,
+      "label": "M-3",
+      "total_spend_usd": 86518.05,
+      "waste_usd": 8257.82,
+      "waste_pct": 9.54,
+      "services": [
+        {
+          "service": "Organizations",
+          "spend_usd": 31381.71,
+          "contains_waste": false
+        },
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 22092.37,
+          "contains_waste": false
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 3754.45,
+          "contains_waste": true
+        },
+        {
+          "service": "EKS",
+          "spend_usd": 2124.52,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 1749.0,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 1315.52,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 1266.59,
+          "contains_waste": true
+        },
+        {
+          "service": "ECR",
+          "spend_usd": 23.01,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 2,
+      "label": "M-2",
+      "total_spend_usd": 88278.71,
+      "waste_usd": 8546.65,
+      "waste_pct": 9.68,
+      "services": [
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 31176.38,
+          "contains_waste": false
+        },
+        {
+          "service": "Organizations",
+          "spend_usd": 23175.92,
+          "contains_waste": false
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 3761.59,
+          "contains_waste": true
+        },
+        {
+          "service": "EKS",
+          "spend_usd": 2024.28,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 1693.9,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 1393.79,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 1371.05,
+          "contains_waste": true
+        },
+        {
+          "service": "ECR",
+          "spend_usd": 28.85,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 1,
+      "label": "M-1",
+      "total_spend_usd": 87579.99,
+      "waste_usd": 8460.15,
+      "waste_pct": 9.66,
+      "services": [
+        {
+          "service": "Organizations",
+          "spend_usd": 35567.23,
+          "contains_waste": false
+        },
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 20868.35,
+          "contains_waste": false
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 3692.38,
+          "contains_waste": true
+        },
+        {
+          "service": "EKS",
+          "spend_usd": 2201.97,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 1495.6,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 1419.5,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 1291.15,
+          "contains_waste": true
+        },
+        {
+          "service": "ECR",
+          "spend_usd": 25.03,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 0,
+      "label": "M-0",
+      "total_spend_usd": 94295.76,
+      "waste_usd": 8309.66,
+      "waste_pct": 8.81,
+      "services": [
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 39199.81,
+          "contains_waste": false
+        },
+        {
+          "service": "Organizations",
+          "spend_usd": 20539.9,
+          "contains_waste": false
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 3762.33,
+          "contains_waste": true
+        },
+        {
+          "service": "EKS",
+          "spend_usd": 1992.46,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 1667.26,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 1515.66,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 1395.54,
+          "contains_waste": true
+        },
+        {
+          "service": "ECR",
+          "spend_usd": 26.92,
+          "contains_waste": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "avg_monthly_total": 90278.75,
+    "avg_monthly_waste": 8441.22,
+    "waste_services": [
+      "EC2",
+      "ECR",
+      "EKS",
+      "ELB",
+      "RDS",
+      "S3"
+    ],
+    "pricing_note": "[L3-038] m5.2xlarge $0.384/hr. 적정 노드 5개로 운영 가능하나 버퍼 포함 시 15개 초과 노드 × $0.384 × 730 ≈ $4,205. 안전 마진 감안 waste ~$3,360/mo. · [L1-009] ECR 스토리지: 200GB × $0.10/GB = $20/mo · [L3-031] 월 총 비용 $10,000 중 $5,000이 태그 미지정 리소스에서 발생하여 비용 할당 및 최적화 우선순위 판단 불가"
+  }
+}

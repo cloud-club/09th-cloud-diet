@@ -1,13 +1,22 @@
 {
   "season": "2",
   "week": 2,
-  "type": "project",
+  "type": "fusion-analysis",
   "level": null,
   "scenarios": [
     "MA-005"
   ],
   "theme": "멀티 에이전트 아키텍처 도입",
-  "note": "단독",
+  "ma_id": "MA-005",
+  "components": [
+    "L3-032",
+    "L3-033",
+    "L3-034"
+  ],
+  "company": "GameNova",
+  "seed": 1261188750,
+  "line_count": 1381,
+  "expected_monthly_waste_usd": 5585.35,
   "reveal_date": "2026-05-11",
   "due_date": "2026-05-18"
 }

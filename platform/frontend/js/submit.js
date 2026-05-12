@@ -167,6 +167,7 @@ function getFormData() {
     cause: document.getElementById('sub-cause').value.trim(),
     solution: document.getElementById('sub-solution').value.trim(),
     savings: document.getElementById('sub-savings').value.trim(),
+    measurement: document.getElementById('sub-measurement')?.value.trim() || '',
     terraform: document.getElementById('sub-terraform')?.value.trim() || '',
   };
 }
@@ -189,6 +190,15 @@ ${data.solution}
 
 ### Estimated Monthly Savings (USD)
 ${data.savings}`;
+
+  if (data.measurement) {
+    body += `
+
+### 측정 데이터 (시즌 2 멀티 에이전트 비교)
+\`\`\`json
+${data.measurement}
+\`\`\``;
+  }
 
   if (data.terraform) {
     body += `

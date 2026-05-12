@@ -1,0 +1,643 @@
+{
+  "scenario_id": "fusion",
+  "currency": "USD",
+  "period_months": 6,
+  "_fusion_components": [
+    "L1-001",
+    "L1-005",
+    "L1-008",
+    "L1-010",
+    "L1-011",
+    "L1-013",
+    "L2-014",
+    "L2-018",
+    "L2-019",
+    "L2-020",
+    "L2-022",
+    "L3-025",
+    "L3-029",
+    "L3-031",
+    "L3-035",
+    "L3-036",
+    "L3-038",
+    "L3-039"
+  ],
+  "monthly_data": [
+    {
+      "month_offset": 5,
+      "label": "M-5",
+      "total_spend_usd": 228174.02,
+      "waste_usd": 22268.41,
+      "waste_pct": 9.76,
+      "services": [
+        {
+          "service": "Glue",
+          "spend_usd": 89028.77,
+          "contains_waste": false
+        },
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 14456.61,
+          "contains_waste": false
+        },
+        {
+          "service": "Organizations",
+          "spend_usd": 13465.75,
+          "contains_waste": false
+        },
+        {
+          "service": "S3",
+          "spend_usd": 6945.01,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 5410.08,
+          "contains_waste": true
+        },
+        {
+          "service": "Athena",
+          "spend_usd": 4598.46,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 2970.99,
+          "contains_waste": true
+        },
+        {
+          "service": "EKS",
+          "spend_usd": 2343.99,
+          "contains_waste": true
+        },
+        {
+          "service": "Kinesis",
+          "spend_usd": 1662.25,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 1367.19,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 978.67,
+          "contains_waste": true
+        },
+        {
+          "service": "Redshift",
+          "spend_usd": 825.82,
+          "contains_waste": true
+        },
+        {
+          "service": "ElastiCache",
+          "spend_usd": 739.98,
+          "contains_waste": true
+        },
+        {
+          "service": "DynamoDB",
+          "spend_usd": 550.52,
+          "contains_waste": true
+        },
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 214.22,
+          "contains_waste": true
+        },
+        {
+          "service": "EBS",
+          "spend_usd": 187.98,
+          "contains_waste": true
+        },
+        {
+          "service": "CloudFront",
+          "spend_usd": 181.01,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 168.67,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 4,
+      "label": "M-4",
+      "total_spend_usd": 235171.88,
+      "waste_usd": 22128.31,
+      "waste_pct": 9.41,
+      "services": [
+        {
+          "service": "Glue",
+          "spend_usd": 93355.1,
+          "contains_waste": false
+        },
+        {
+          "service": "Organizations",
+          "spend_usd": 17687.43,
+          "contains_waste": false
+        },
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 9962.43,
+          "contains_waste": false
+        },
+        {
+          "service": "S3",
+          "spend_usd": 6121.18,
+          "contains_waste": true
+        },
+        {
+          "service": "Athena",
+          "spend_usd": 4800.82,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 4592.8,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 3277.04,
+          "contains_waste": true
+        },
+        {
+          "service": "Kinesis",
+          "spend_usd": 2146.84,
+          "contains_waste": true
+        },
+        {
+          "service": "EKS",
+          "spend_usd": 1789.71,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 1440.14,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 1013.13,
+          "contains_waste": true
+        },
+        {
+          "service": "Redshift",
+          "spend_usd": 942.78,
+          "contains_waste": true
+        },
+        {
+          "service": "ElastiCache",
+          "spend_usd": 807.81,
+          "contains_waste": true
+        },
+        {
+          "service": "DynamoDB",
+          "spend_usd": 753.19,
+          "contains_waste": true
+        },
+        {
+          "service": "EBS",
+          "spend_usd": 226.42,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 190.62,
+          "contains_waste": true
+        },
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 165.5,
+          "contains_waste": true
+        },
+        {
+          "service": "CloudFront",
+          "spend_usd": 157.05,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 3,
+      "label": "M-3",
+      "total_spend_usd": 229524.79,
+      "waste_usd": 22101.11,
+      "waste_pct": 9.63,
+      "services": [
+        {
+          "service": "Glue",
+          "spend_usd": 94699.89,
+          "contains_waste": false
+        },
+        {
+          "service": "Organizations",
+          "spend_usd": 13900.79,
+          "contains_waste": false
+        },
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 12483.6,
+          "contains_waste": false
+        },
+        {
+          "service": "S3",
+          "spend_usd": 6337.08,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 5023.32,
+          "contains_waste": true
+        },
+        {
+          "service": "Athena",
+          "spend_usd": 3947.24,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 3219.91,
+          "contains_waste": true
+        },
+        {
+          "service": "Kinesis",
+          "spend_usd": 1754.68,
+          "contains_waste": true
+        },
+        {
+          "service": "EKS",
+          "spend_usd": 1714.59,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 1363.45,
+          "contains_waste": true
+        },
+        {
+          "service": "Redshift",
+          "spend_usd": 974.52,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 953.23,
+          "contains_waste": true
+        },
+        {
+          "service": "ElastiCache",
+          "spend_usd": 891.85,
+          "contains_waste": true
+        },
+        {
+          "service": "DynamoDB",
+          "spend_usd": 592.41,
+          "contains_waste": true
+        },
+        {
+          "service": "EBS",
+          "spend_usd": 210.82,
+          "contains_waste": true
+        },
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 188.76,
+          "contains_waste": true
+        },
+        {
+          "service": "CloudFront",
+          "spend_usd": 160.18,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 154.33,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 2,
+      "label": "M-2",
+      "total_spend_usd": 234310.42,
+      "waste_usd": 22418.91,
+      "waste_pct": 9.57,
+      "services": [
+        {
+          "service": "Glue",
+          "spend_usd": 93390.72,
+          "contains_waste": false
+        },
+        {
+          "service": "Organizations",
+          "spend_usd": 17242.5,
+          "contains_waste": false
+        },
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 10635.73,
+          "contains_waste": false
+        },
+        {
+          "service": "S3",
+          "spend_usd": 6372.46,
+          "contains_waste": true
+        },
+        {
+          "service": "Athena",
+          "spend_usd": 4972.6,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 4898.67,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 3514.62,
+          "contains_waste": true
+        },
+        {
+          "service": "EKS",
+          "spend_usd": 2276.28,
+          "contains_waste": true
+        },
+        {
+          "service": "Kinesis",
+          "spend_usd": 1723.96,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 1690.91,
+          "contains_waste": true
+        },
+        {
+          "service": "Redshift",
+          "spend_usd": 1104.66,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 1082.0,
+          "contains_waste": true
+        },
+        {
+          "service": "ElastiCache",
+          "spend_usd": 958.95,
+          "contains_waste": true
+        },
+        {
+          "service": "DynamoDB",
+          "spend_usd": 616.69,
+          "contains_waste": true
+        },
+        {
+          "service": "EBS",
+          "spend_usd": 218.16,
+          "contains_waste": true
+        },
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 192.63,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 158.43,
+          "contains_waste": true
+        },
+        {
+          "service": "CloudFront",
+          "spend_usd": 154.93,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 1,
+      "label": "M-1",
+      "total_spend_usd": 239558.63,
+      "waste_usd": 22526.17,
+      "waste_pct": 9.4,
+      "services": [
+        {
+          "service": "Glue",
+          "spend_usd": 98760.16,
+          "contains_waste": false
+        },
+        {
+          "service": "Organizations",
+          "spend_usd": 14897.23,
+          "contains_waste": false
+        },
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 14029.96,
+          "contains_waste": false
+        },
+        {
+          "service": "S3",
+          "spend_usd": 5642.07,
+          "contains_waste": true
+        },
+        {
+          "service": "Athena",
+          "spend_usd": 5491.73,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 4398.12,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 3423.83,
+          "contains_waste": true
+        },
+        {
+          "service": "EKS",
+          "spend_usd": 2440.44,
+          "contains_waste": true
+        },
+        {
+          "service": "Kinesis",
+          "spend_usd": 1831.88,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 1739.97,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 1162.42,
+          "contains_waste": true
+        },
+        {
+          "service": "Redshift",
+          "spend_usd": 862.03,
+          "contains_waste": true
+        },
+        {
+          "service": "ElastiCache",
+          "spend_usd": 737.31,
+          "contains_waste": true
+        },
+        {
+          "service": "DynamoDB",
+          "spend_usd": 720.15,
+          "contains_waste": true
+        },
+        {
+          "service": "EBS",
+          "spend_usd": 226.09,
+          "contains_waste": true
+        },
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 189.97,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 185.67,
+          "contains_waste": true
+        },
+        {
+          "service": "CloudFront",
+          "spend_usd": 160.38,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 0,
+      "label": "M-0",
+      "total_spend_usd": 236359.67,
+      "waste_usd": 22280.87,
+      "waste_pct": 9.43,
+      "services": [
+        {
+          "service": "Glue",
+          "spend_usd": 99543.45,
+          "contains_waste": false
+        },
+        {
+          "service": "Organizations",
+          "spend_usd": 16383.75,
+          "contains_waste": false
+        },
+        {
+          "service": "Cost Explorer",
+          "spend_usd": 9779.77,
+          "contains_waste": false
+        },
+        {
+          "service": "S3",
+          "spend_usd": 5869.54,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 4715.32,
+          "contains_waste": true
+        },
+        {
+          "service": "Athena",
+          "spend_usd": 4581.1,
+          "contains_waste": true
+        },
+        {
+          "service": "RDS",
+          "spend_usd": 3206.61,
+          "contains_waste": true
+        },
+        {
+          "service": "EKS",
+          "spend_usd": 2347.53,
+          "contains_waste": true
+        },
+        {
+          "service": "Kinesis",
+          "spend_usd": 1871.01,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 1447.57,
+          "contains_waste": true
+        },
+        {
+          "service": "Redshift",
+          "spend_usd": 943.52,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 923.11,
+          "contains_waste": true
+        },
+        {
+          "service": "ElastiCache",
+          "spend_usd": 774.45,
+          "contains_waste": true
+        },
+        {
+          "service": "DynamoDB",
+          "spend_usd": 728.98,
+          "contains_waste": true
+        },
+        {
+          "service": "EBS",
+          "spend_usd": 230.68,
+          "contains_waste": true
+        },
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 226.86,
+          "contains_waste": true
+        },
+        {
+          "service": "CloudFront",
+          "spend_usd": 198.09,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 180.56,
+          "contains_waste": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "avg_monthly_total": 233849.91,
+    "avg_monthly_waste": 22287.3,
+    "waste_services": [
+      "Athena",
+      "CloudFront",
+      "DynamoDB",
+      "EBS",
+      "EC2",
+      "EKS",
+      "ELB",
+      "ElastiCache",
+      "Kinesis",
+      "Lambda",
+      "NAT Gateway",
+      "RDS",
+      "Redshift",
+      "S3",
+      "VPC"
+    ],
+    "pricing_note": "[L1-001] gp2 500GB × 3 × $0.10/GB = $150/mo. 인스턴스 자체는 stopped 상태라 컴퓨트 비용 없음. · [L1-005] ALB 고정 비용: $0.0225/hr × 730hr × 2 = $32.85/mo (LCU 비용 제외, 트래픽 0) · [L1-008] AMI 연결 스냅샷: 600GB × $0.05/GB = $30/mo · [L1-010] 미사용 WCU: 900 × $0.00065/hr × 730hr ≈ $427. 미사용 RCU: 4500 × $0.00013/hr × 730hr ≈ $427. 총 약 $522/mo 낭비 (실사용 대비 초과분) · [L1-011] 8 TB eligible × ($0.023 - $0.004)/GB = 8,192 GB × $0.019 ≈ $155.6 → ~$152/mo · [L1-013] 2 × 500 GB × (28 extra days / 30) × $0.095/GB-month ≈ 2 × 500 × 0.933 × $0.095 ≈ $266/mo · [L2-014] Lambda 비용 = 요청 수 + (Duration x 할당 메모리 GB-초). 3008MB → 512MB로 줄이면 함수당 약 $250/mo 절감 (3 함수 합계 $750/mo). · [L2-018] Shard 시간당 $0.015. 유휴 90 shards × $0.015 × 730시간 = ~$985/mo. On-Demand 전환 또는 10 shard로 축소 가능. · [L2-019] cache.r5.large = $0.228/hr. 초과 4 노드 × $0.228 × 730시간 = ~$665/mo 절감 가능. · [L2-020] db.r5.xlarge = $0.48/hr. 미사용 Replica 3개 × $0.48 × 730시간 = ~$1051/mo. Replica 삭제 또는 앱에서 Reader Endpoint 사용 설정. · [L2-022] Enhanced Fan-Out 추가비용: 샤드시간 $0.015 × 20샤드 × 730h = $219 + 데이터 검색 15TB × $0.013/GB = $195 + 컨슈머 시간 = $437/월 · [L3-025] 전체 5TB 중 2/3(≈3.33TB)가 Cross-AZ 경유. 양방향 과금으로 3,333GB x $0.01 x 2 = $66/월 추가 비용. 단일 AZ 장애 시 가용성 리스크는 별도. · [L3-029] NAT Gateway 처리 비용: 8TB x $0.045/GB = $360/월. S3 Gateway Endpoint 사용 시 NAT 처리 비용 전액 절감. · [L3-031] 월 총 비용 $10,000 중 $5,000이 태그 미지정 리소스에서 발생하여 비용 할당 및 최적화 우선순위 판단 불가 · [L3-035] Athena $5/TB scanned. 50 queries × 30 days × 10TB × $5 = $75,000 vs partitioned $750. Attributable waste ~$7,500/mo after caching and optimization adjustments. · [L3-036] ra3.xlplus $0.382/hr per node. 4 nodes × $0.382 × 730 hrs = $1,115/mo total. 70% idle → $782/mo waste. · [L3-038] m5.2xlarge $0.384/hr. 적정 노드 5개로 운영 가능하나 버퍼 포함 시 15개 초과 노드 × $0.384 × 730 ≈ $4,205. 안전 마진 감안 waste ~$3,360/mo. · [L3-039] S3 직접 전송 5TB × $0.09/GB = $450/mo. CF 사용 시 캐시 60% 적중으로 오리진 2TB × $0.085/GB ≈ $170 + CF 전송 비용. 실효 절감 ~$270/mo."
+  }
+}

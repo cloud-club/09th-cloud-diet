@@ -1,0 +1,323 @@
+{
+  "scenario_id": "fusion",
+  "currency": "USD",
+  "period_months": 6,
+  "_fusion_components": [
+    "L2-016",
+    "L1-005",
+    "L3-025",
+    "L3-029",
+    "L2-017"
+  ],
+  "monthly_data": [
+    {
+      "month_offset": 5,
+      "label": "M-5",
+      "total_spend_usd": 19108.95,
+      "waste_usd": 1958.87,
+      "waste_pct": 10.25,
+      "services": [
+        {
+          "service": "Fargate",
+          "spend_usd": 666.51,
+          "contains_waste": true
+        },
+        {
+          "service": "ECS",
+          "spend_usd": 565.68,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 272.55,
+          "contains_waste": true
+        },
+        {
+          "service": "Auto Scaling",
+          "spend_usd": 267.63,
+          "contains_waste": true
+        },
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 197.26,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 193.24,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 129.55,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 37.22,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 4,
+      "label": "M-4",
+      "total_spend_usd": 19207.64,
+      "waste_usd": 1892.51,
+      "waste_pct": 9.85,
+      "services": [
+        {
+          "service": "ECS",
+          "spend_usd": 589.64,
+          "contains_waste": true
+        },
+        {
+          "service": "Fargate",
+          "spend_usd": 557.46,
+          "contains_waste": true
+        },
+        {
+          "service": "Auto Scaling",
+          "spend_usd": 278.69,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 259.76,
+          "contains_waste": true
+        },
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 209.21,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 191.44,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 132.42,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 42.4,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 3,
+      "label": "M-3",
+      "total_spend_usd": 19315.22,
+      "waste_usd": 1908.51,
+      "waste_pct": 9.88,
+      "services": [
+        {
+          "service": "Fargate",
+          "spend_usd": 781.81,
+          "contains_waste": true
+        },
+        {
+          "service": "ECS",
+          "spend_usd": 743.64,
+          "contains_waste": true
+        },
+        {
+          "service": "Auto Scaling",
+          "spend_usd": 297.29,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 226.99,
+          "contains_waste": true
+        },
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 194.27,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 171.6,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 160.74,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 43.45,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 2,
+      "label": "M-2",
+      "total_spend_usd": 19919.0,
+      "waste_usd": 1910.44,
+      "waste_pct": 9.59,
+      "services": [
+        {
+          "service": "Fargate",
+          "spend_usd": 558.85,
+          "contains_waste": true
+        },
+        {
+          "service": "ECS",
+          "spend_usd": 554.15,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 246.91,
+          "contains_waste": true
+        },
+        {
+          "service": "Auto Scaling",
+          "spend_usd": 244.28,
+          "contains_waste": true
+        },
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 229.32,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 188.76,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 126.04,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 48.84,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 1,
+      "label": "M-1",
+      "total_spend_usd": 19968.99,
+      "waste_usd": 1956.32,
+      "waste_pct": 9.8,
+      "services": [
+        {
+          "service": "ECS",
+          "spend_usd": 796.93,
+          "contains_waste": true
+        },
+        {
+          "service": "Fargate",
+          "spend_usd": 769.61,
+          "contains_waste": true
+        },
+        {
+          "service": "Auto Scaling",
+          "spend_usd": 289.6,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 215.17,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 209.35,
+          "contains_waste": true
+        },
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 206.46,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 145.73,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 40.48,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 0,
+      "label": "M-0",
+      "total_spend_usd": 19372.36,
+      "waste_usd": 1890.7,
+      "waste_pct": 9.76,
+      "services": [
+        {
+          "service": "Fargate",
+          "spend_usd": 657.34,
+          "contains_waste": true
+        },
+        {
+          "service": "ECS",
+          "spend_usd": 633.56,
+          "contains_waste": true
+        },
+        {
+          "service": "Auto Scaling",
+          "spend_usd": 307.72,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 281.54,
+          "contains_waste": true
+        },
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 192.95,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 167.79,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 127.63,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 36.28,
+          "contains_waste": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "avg_monthly_total": 19482.02,
+    "avg_monthly_waste": 1919.57,
+    "waste_services": [
+      "Auto Scaling",
+      "EC2",
+      "ECS",
+      "ELB",
+      "Fargate",
+      "NAT Gateway",
+      "S3",
+      "VPC"
+    ],
+    "pricing_note": "[L2-016] Fargate 비용 = vCPU-시간($0.04048) + GB-시간($0.004445). 4vCPU/8GB → 1vCPU/2GB = 75% 절감. 현재 ~$1400/mo 중 $1050/mo 절감 가능. · [L1-005] ALB 고정 비용: $0.0225/hr × 730hr × 2 = $32.85/mo (LCU 비용 제외, 트래픽 0) · [L3-025] 전체 5TB 중 2/3(≈3.33TB)가 Cross-AZ 경유. 양방향 과금으로 3,333GB x $0.01 x 2 = $66/월 추가 비용. 단일 AZ 장애 시 가용성 리스크는 별도. · [L3-029] NAT Gateway 처리 비용: 8TB x $0.045/GB = $360/월. S3 Gateway Endpoint 사용 시 NAT 처리 비용 전액 절감. · [L2-017] m5.xlarge = $0.192/hr. 평균 3개 불필요 인스턴스 × $0.192 × 730시간 = ~$420/mo 낭비."
+  }
+}

@@ -1,13 +1,24 @@
 {
   "season": "2",
   "week": 2,
-  "type": "project",
+  "type": "fusion-analysis",
   "level": null,
   "scenarios": [
     "MA-002"
   ],
   "theme": "멀티 에이전트 아키텍처 도입",
-  "note": "단독",
+  "ma_id": "MA-002",
+  "components": [
+    "L2-016",
+    "L1-005",
+    "L3-025",
+    "L3-029",
+    "L2-017"
+  ],
+  "company": "MedCloud",
+  "seed": 1954032118,
+  "line_count": 1319,
+  "expected_monthly_waste_usd": 1919.57,
   "reveal_date": "2026-05-11",
   "due_date": "2026-05-18"
 }

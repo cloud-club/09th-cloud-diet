@@ -1,73 +1,54 @@
 # MA-004 · 데이터 파이프라인 4-domain Fusion
 
-> 시즌 2 Week 2 · 멤버: **@do-dop** · 배정 노트: _단독_
-> 데드라인: 2026-05-18 (월요일 22:00 세션 전까지)
+> **회사**: PayBridge · **인수자**: @do-dop
+> Week 2 · 데드라인: 2026-05-18 (월요일 22:00 세션 전까지)
 
----
+## 상황
 
-## 1. 상황
+실시간 분석 파이프라인. Kinesis Enhanced Fan-Out이 켜져 있고, Lambda timeout이 900초로 잡혔고, S3 Cross-Region Replication이 prefix 필터 없이 전체 적용됐고, Athena 결과 버킷에는 lifecycle이 없습니다. 4 시나리오 각각은 단일로 명확한데, 합쳐서 보면 downstream 영향까지 추적해야 합니다.
 
-실시간 분석 파이프라인. Kinesis EFO 활성 + Lambda timeout 900초 + S3 CRR 전체 + Athena 결과 무제한.
+이번 주차는 **단일 에이전트로는 풀기 어려운 결합 시나리오**를 받았습니다. 분석할 대상이 `main.tf` 한 파일에 모두 들어 있는데, 라인 수가 약 **194줄**이고 여러 도메인이 섞여 있습니다.
 
-## 2. 시즌 1 결합 패턴
+## 인프라에 심어진 문제 패턴
 
-시즌 1: S1-022 (Kinesis EFO 불필요) + S1-015 (Lambda timeout 과잉) + S1-037 (S3 CRR 전체) + S1-023 (Athena 결과 무제한)
+이 시나리오는 시즌 1에서 다뤘던 다음 단일 패턴들을 **한 인프라에 동시 발생**시킨 것입니다:
 
-> 시즌 1 단일 시나리오들은 각각 명확한데, 결합되면 단일 에이전트로 발견 어려움. 이번 주차 과제의 핵심 함정.
+- `L2-022`
+- `L2-015`
+- `L3-037`
+- `L2-023`
 
-## 3. 단일 에이전트로 풀 때의 문제
+> 단일 패턴은 시즌 1 [scenarios-guide.md](https://github.com/cloud-club/09th-ai-cloud-finops/blob/main/platform/docs/scenarios-guide.md) 에서 정의를 확인할 수 있습니다.
 
-4 시나리오 각각 단일로 명확하지만, 합쳐서 downstream 영향 분석은 컨텍스트 한계.
+## 데이터 자료
 
-## 4. 멀티 에이전트로 풀어야 할 목표
+| 파일 | 내용 |
+|------|------|
+| `main.tf` | 결합된 Terraform (약 194줄, 컴포넌트별 prefix `comp1_` ~ `comp4_`) |
+| `cost_report.json` | 6개월 비용 히스토리 + 서비스별 breakdown · 월 낭비 추정 약 **$1,283** |
+| `metrics/metrics.json` | 30일 시간별 CloudWatch 메트릭 (모든 컴포넌트 리소스) |
+| `hint.txt` | 멀티 에이전트 활용 힌트 |
 
-Streaming + Compute + Storage + Analytics 4 전문가.
+## 분석 과제
 
-### 기대하는 emergent finding
+1. **베이스라인 측정** — 본인의 현재 FinOps 도구(단일 에이전트 구조)로 이 시나리오를 분석. 발견 issue 수 / 토큰 사용량 / wall-clock 기록.
+2. **멀티 에이전트 적용** — 본인 도구를 multi-agent로 리팩토링(or PoC) 후 같은 분석 재실행. 동일 metric 기록.
+3. **결과 분석** — recall 향상 / 토큰 비용 변화 / emergent finding 도출 여부.
 
-"Lambda timeout이 Kinesis EFO 처리량 못 따라가 backlog 누적 → Athena가 backlog 보정용으로 large scan 패턴" chain reasoning.
+## 제출 형식
 
-## 5. 예상 비용 영향
+`Submit Answer` 페이지에서 시나리오 ID `MA-004`로 다음을 제출:
+- **Analysis** — 발견한 문제, root cause, 권장 해결 (시즌 1 양식)
+- **Optimized Terraform** — 결합 시나리오에서 수정한 `main.tf`
+- **Estimated Monthly Savings** — 총 절감 추정액 (USD)
+- **Report Upload** — `report.md` (단일 vs 멀티 비교 + 측정 데이터 + 회고)
 
-$3,200/월
+## 힌트
 
----
+Streaming + Compute + Storage + Analytics 4 전문가. 'Lambda timeout이 backlog 누적시켜 Athena scan 패턴 바꾼다' 같은 chain은 단일 에이전트가 못 잡습니다.
 
-## 🎯 본주 과제 (산출물)
-
-본인의 FinOps 도구에 **multi-agent 패턴을 적용**해서 이 시나리오를 풀어 오기.
-
-### 필수 산출물
-
-- [ ] **단일 에이전트 baseline 측정** — 본인 도구의 현재 구조로 이 시나리오 분석. 발견 issue 개수 / 토큰 사용량 / wall-clock 시간 기록.
-- [ ] **멀티 에이전트 리팩토링 plan** — orchestrator + 도메인 전문가 N개 설계도. 컨텍스트 분할 전략 명시.
-- [ ] **PoC 구현** — 위 plan을 실제 코드로 (full implementation이 어려우면 핵심 부분만이라도). 선택한 framework: Claude Subagent / LangGraph / Strands / AgentCore 중 본인 도구에 맞는 것.
-- [ ] **before/after 측정** — recall / 토큰 사용량 / wall-clock 비교 표 + 정성적 차이 (예: emergent finding 잡았나).
-
-### 평가 기준
-
-| 항목 | 배점 | 내용 |
-|------|:---:|------|
-| 단일 baseline 정직성 | 15 | 단일 에이전트가 잡는 것·놓치는 것 정확히 측정했나 |
-| 분할 설계 합리성 | 25 | 도메인 경계가 시나리오 구조와 맞나, 토큰 효율적인가 |
-| Emergent finding 재현 | 20 | 본 시나리오의 emergent finding 또는 그에 준하는 cross-domain 통찰 도출했나 |
-| 구현 완성도 | 20 | PoC가 실제 작동하나, 외부 dependency 명확한가 |
-| Framework 선택 근거 | 10 | 본인 도구 기존 스택 + 시나리오 특성과 매칭되는가 |
-| 회고 | 10 | 단일 대비 multi-agent의 trade-off를 솔직히 분석했나 (토큰 15x 비용 정당화) |
-
-### 제출 형식
-
-`members/do-dop/season-2/submissions/week-02/MA-004/` 아래:
-- `report.md` — 위 4개 항목을 정리한 보고서
-- `architecture.md` (or diagram.png) — 멀티 에이전트 설계도
-- `code/` — PoC 코드 (가능한 만큼)
-- `measurements.json` — 정량 비교 데이터
-
----
-
-## 📚 참고 자료
-
-- [Week 2 학습 자료 모음](../../../../../weeks/week-02/) — Materials 페이지 Week 2 탭
-- [시나리오 카탈로그 v1.0 (상세본)](../../../../../docs/SCENARIOS_S2_DETAILED.md#ma-004)
-- [Anthropic Building Effective Agents](https://www.anthropic.com/research/building-effective-agents) — 5 패턴
-- [Anthropic Multi-Agent Research System](https://www.anthropic.com/engineering/multi-agent-research-system) — 실제 구축 경험
+평가 기준:
+- 발견한 문제 정확성 + 누락 패턴 수
+- root cause 분석 깊이
+- 권장 해결의 실행 가능성
+- (보너스) 단일 vs 멀티 에이전트 측정 데이터 정직성

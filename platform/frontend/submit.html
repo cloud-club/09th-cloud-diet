@@ -127,6 +127,15 @@
               <label for="sub-savings">Estimated Monthly Savings (USD)</label>
               <input type="number" id="sub-savings" min="0" step="0.01" placeholder="150">
             </div>
+
+            <div class="form-group">
+              <label for="sub-measurement">측정 데이터 <span style="font-size:12px;color:var(--text-muted);">(시즌 2 멀티 에이전트 비교용 — 선택)</span></label>
+              <textarea id="sub-measurement" style="font-family:var(--mono);font-size:13px;min-height:120px;" placeholder='{"single_agent": {"recall": 0.43, "input_tokens": 62000, "output_tokens": 4800, "wall_clock_sec": 95},
+ "multi_agent": {"recall": 0.92, "input_tokens": 158000, "output_tokens": 11200, "wall_clock_sec": 112, "agent_count": 4},
+ "framework": "claude-subagent",
+ "notes": "DDB 전문가가 Lambda 호출 패턴 cross-query 요청 → emergent finding 1건"}'></textarea>
+              <p class="form-hint">단일 vs 멀티 에이전트 비교 측정값(JSON). 시즌 2 Week 2~7에서 활용. 시즌 1 문제이면 비워두세요.</p>
+            </div>
           </div>
         </div>
 

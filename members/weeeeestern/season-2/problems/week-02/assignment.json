@@ -1,13 +1,23 @@
 {
   "season": "2",
   "week": 2,
-  "type": "project",
+  "type": "fusion-analysis",
   "level": null,
   "scenarios": [
     "MA-006"
   ],
   "theme": "멀티 에이전트 아키텍처 도입",
-  "note": "단독",
+  "ma_id": "MA-006",
+  "components": [
+    "L1-004",
+    "L1-013",
+    "L2-020",
+    "L3-040"
+  ],
+  "company": "CloudSync",
+  "seed": 1545447037,
+  "line_count": 453,
+  "expected_monthly_waste_usd": 2172.78,
   "reveal_date": "2026-05-11",
   "due_date": "2026-05-18"
 }

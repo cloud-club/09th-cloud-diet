@@ -1,0 +1,197 @@
+{
+  "scenario_id": "fusion",
+  "currency": "USD",
+  "period_months": 6,
+  "_fusion_components": [
+    "L2-022",
+    "L2-015",
+    "L3-037",
+    "L2-023"
+  ],
+  "monthly_data": [
+    {
+      "month_offset": 5,
+      "label": "M-5",
+      "total_spend_usd": 11828.91,
+      "waste_usd": 1290.63,
+      "waste_pct": 10.91,
+      "services": [
+        {
+          "service": "Athena",
+          "spend_usd": 697.04,
+          "contains_waste": false
+        },
+        {
+          "service": "S3",
+          "spend_usd": 589.36,
+          "contains_waste": true
+        },
+        {
+          "service": "Kinesis",
+          "spend_usd": 587.53,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 474.39,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 4,
+      "label": "M-4",
+      "total_spend_usd": 12019.65,
+      "waste_usd": 1285.38,
+      "waste_pct": 10.69,
+      "services": [
+        {
+          "service": "Athena",
+          "spend_usd": 741.04,
+          "contains_waste": false
+        },
+        {
+          "service": "S3",
+          "spend_usd": 664.48,
+          "contains_waste": true
+        },
+        {
+          "service": "Kinesis",
+          "spend_usd": 616.29,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 513.96,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 3,
+      "label": "M-3",
+      "total_spend_usd": 11893.34,
+      "waste_usd": 1256.81,
+      "waste_pct": 10.57,
+      "services": [
+        {
+          "service": "S3",
+          "spend_usd": 718.49,
+          "contains_waste": true
+        },
+        {
+          "service": "Athena",
+          "spend_usd": 588.68,
+          "contains_waste": false
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 490.06,
+          "contains_waste": true
+        },
+        {
+          "service": "Kinesis",
+          "spend_usd": 479.44,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 2,
+      "label": "M-2",
+      "total_spend_usd": 11717.55,
+      "waste_usd": 1290.11,
+      "waste_pct": 11.01,
+      "services": [
+        {
+          "service": "Athena",
+          "spend_usd": 712.58,
+          "contains_waste": false
+        },
+        {
+          "service": "S3",
+          "spend_usd": 528.37,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 481.92,
+          "contains_waste": true
+        },
+        {
+          "service": "Kinesis",
+          "spend_usd": 474.0,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 1,
+      "label": "M-1",
+      "total_spend_usd": 11545.17,
+      "waste_usd": 1294.34,
+      "waste_pct": 11.21,
+      "services": [
+        {
+          "service": "Athena",
+          "spend_usd": 679.57,
+          "contains_waste": false
+        },
+        {
+          "service": "Kinesis",
+          "spend_usd": 614.0,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 607.19,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 352.62,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 0,
+      "label": "M-0",
+      "total_spend_usd": 12078.43,
+      "waste_usd": 1283.16,
+      "waste_pct": 10.62,
+      "services": [
+        {
+          "service": "Athena",
+          "spend_usd": 672.81,
+          "contains_waste": false
+        },
+        {
+          "service": "Kinesis",
+          "spend_usd": 586.1,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 546.32,
+          "contains_waste": true
+        },
+        {
+          "service": "Lambda",
+          "spend_usd": 431.92,
+          "contains_waste": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "avg_monthly_total": 11847.18,
+    "avg_monthly_waste": 1283.4,
+    "waste_services": [
+      "Kinesis",
+      "Lambda",
+      "S3"
+    ],
+    "pricing_note": "[L2-022] Enhanced Fan-Out 추가비용: 샤드시간 $0.015 × 20샤드 × 730h = $219 + 데이터 검색 15TB × $0.013/GB = $195 + 컨슈머 시간 = $437/월 · [L2-015] 에러 시 900초 × 1024MB = 900 GB-초/호출. 하루 50000 × 2% = 1000 에러 호출 × 900 GB-초. 타임아웃을 10초로 줄이면 에러 비용 99% 절감. 함수당 약 $180/mo (2 함수 합계 $360/mo). · [L3-037] 불필요 복제 16TB × $0.023/GB/mo (S3 Standard us-west-2) = $368/mo. 추가로 CRR 데이터 전송 비용과 PUT 요청 비용도 발생. · [L2-023] S3 Standard $0.023/GB/월. 5TB 중 7일치(~210GB)만 필요 → 불필요 저장 ~4.9TB × $0.023 ≈ $115/월 낭비"
+  }
+}
