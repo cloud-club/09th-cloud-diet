@@ -1,0 +1,13 @@
+{
+  "season": "2",
+  "week": 2,
+  "type": "project",
+  "level": null,
+  "scenarios": [
+    "MA-001"
+  ],
+  "theme": "멀티 에이전트 아키텍처 도입",
+  "note": "페어 A2: seoyoungleeme와 비교 리뷰",
+  "reveal_date": "2026-05-11",
+  "due_date": "2026-05-18"
+}

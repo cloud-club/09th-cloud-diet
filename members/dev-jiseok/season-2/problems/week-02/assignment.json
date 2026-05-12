@@ -1,0 +1,13 @@
+{
+  "season": "2",
+  "week": 2,
+  "type": "project",
+  "level": null,
+  "scenarios": [
+    "MA-007"
+  ],
+  "theme": "멀티 에이전트 아키텍처 도입",
+  "note": "리더 — context-stress 케이스 (가장 복합)",
+  "reveal_date": "2026-05-11",
+  "due_date": "2026-05-18"
+}
