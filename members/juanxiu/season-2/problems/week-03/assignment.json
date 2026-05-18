@@ -1,0 +1,22 @@
+{
+  "season": "2",
+  "week": 3,
+  "type": "fusion-analysis",
+  "level": null,
+  "scenarios": [
+    "XS-002"
+  ],
+  "theme": "멀티 에이전트 아키텍처 도입",
+  "ma_id": "XS-002",
+  "components": [
+    "L1-001",
+    "L1-003",
+    "L1-007"
+  ],
+  "company": "QuickMart",
+  "seed": 758574091,
+  "line_count": 2282,
+  "expected_monthly_waste_usd": 270.18,
+  "reveal_date": "2026-05-11",
+  "due_date": "2026-05-18"
+}

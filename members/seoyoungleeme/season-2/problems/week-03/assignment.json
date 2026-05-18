@@ -1,0 +1,21 @@
+{
+  "season": "2",
+  "week": 3,
+  "type": "fusion-analysis",
+  "level": null,
+  "scenarios": [
+    "XS-001"
+  ],
+  "theme": "멀티 에이전트 아키텍처 도입",
+  "ma_id": "XS-001",
+  "components": [
+    "L2-014",
+    "L1-011"
+  ],
+  "company": "PlayForge",
+  "seed": 395480057,
+  "line_count": 161,
+  "expected_monthly_waste_usd": 905.47,
+  "reveal_date": "2026-05-11",
+  "due_date": "2026-05-18"
+}

@@ -1,0 +1,165 @@
+{
+  "scenario_id": "fusion",
+  "currency": "USD",
+  "period_months": 6,
+  "_fusion_components": [
+    "L1-001",
+    "L1-003",
+    "L1-007"
+  ],
+  "monthly_data": [
+    {
+      "month_offset": 5,
+      "label": "M-5",
+      "total_spend_usd": 2151.49,
+      "waste_usd": 266.79,
+      "waste_pct": 12.4,
+      "services": [
+        {
+          "service": "EC2",
+          "spend_usd": 1797.86,
+          "contains_waste": false
+        },
+        {
+          "service": "EBS",
+          "spend_usd": 328.21,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 25.42,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 4,
+      "label": "M-4",
+      "total_spend_usd": 2307.86,
+      "waste_usd": 266.97,
+      "waste_pct": 11.57,
+      "services": [
+        {
+          "service": "EC2",
+          "spend_usd": 1946.8,
+          "contains_waste": false
+        },
+        {
+          "service": "EBS",
+          "spend_usd": 340.98,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 20.08,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 3,
+      "label": "M-3",
+      "total_spend_usd": 2145.26,
+      "waste_usd": 279.53,
+      "waste_pct": 13.03,
+      "services": [
+        {
+          "service": "EC2",
+          "spend_usd": 1847.32,
+          "contains_waste": false
+        },
+        {
+          "service": "EBS",
+          "spend_usd": 276.05,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 21.89,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 2,
+      "label": "M-2",
+      "total_spend_usd": 2066.19,
+      "waste_usd": 274.84,
+      "waste_pct": 13.3,
+      "services": [
+        {
+          "service": "EC2",
+          "spend_usd": 1752.18,
+          "contains_waste": false
+        },
+        {
+          "service": "EBS",
+          "spend_usd": 290.03,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 23.98,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 1,
+      "label": "M-1",
+      "total_spend_usd": 2321.54,
+      "waste_usd": 257.91,
+      "waste_pct": 11.11,
+      "services": [
+        {
+          "service": "EC2",
+          "spend_usd": 2012.09,
+          "contains_waste": false
+        },
+        {
+          "service": "EBS",
+          "spend_usd": 290.22,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 19.23,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 0,
+      "label": "M-0",
+      "total_spend_usd": 2211.99,
+      "waste_usd": 275.1,
+      "waste_pct": 12.44,
+      "services": [
+        {
+          "service": "EC2",
+          "spend_usd": 1889.71,
+          "contains_waste": false
+        },
+        {
+          "service": "EBS",
+          "spend_usd": 301.36,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 20.92,
+          "contains_waste": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "avg_monthly_total": 2200.73,
+    "avg_monthly_waste": 270.18,
+    "waste_services": [
+      "EBS",
+      "VPC"
+    ],
+    "pricing_note": "[L1-001] gp2 500GB × 3 × $0.10/GB = $150/mo. 인스턴스 자체는 stopped 상태라 컴퓨트 비용 없음. · [L1-003] $0.005/hr × 730hr × 5 EIP = $18.25/mo · [L1-007] EBS 스냅샷: 2TB × $0.05/GB = $100/mo"
+  }
+}

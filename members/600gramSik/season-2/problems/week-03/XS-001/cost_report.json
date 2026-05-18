@@ -1,0 +1,134 @@
+{
+  "scenario_id": "fusion",
+  "currency": "USD",
+  "period_months": 6,
+  "_fusion_components": [
+    "L2-014",
+    "L1-011"
+  ],
+  "monthly_data": [
+    {
+      "month_offset": 5,
+      "label": "M-5",
+      "total_spend_usd": 7318.78,
+      "waste_usd": 927.65,
+      "waste_pct": 12.67,
+      "services": [
+        {
+          "service": "Lambda",
+          "spend_usd": 919.54,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 183.3,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 4,
+      "label": "M-4",
+      "total_spend_usd": 7106.51,
+      "waste_usd": 912.87,
+      "waste_pct": 12.85,
+      "services": [
+        {
+          "service": "Lambda",
+          "spend_usd": 1084.94,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 170.67,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 3,
+      "label": "M-3",
+      "total_spend_usd": 7691.66,
+      "waste_usd": 917.67,
+      "waste_pct": 11.93,
+      "services": [
+        {
+          "service": "Lambda",
+          "spend_usd": 842.29,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 167.1,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 2,
+      "label": "M-2",
+      "total_spend_usd": 7639.72,
+      "waste_usd": 938.8,
+      "waste_pct": 12.29,
+      "services": [
+        {
+          "service": "Lambda",
+          "spend_usd": 1152.73,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 153.64,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 1,
+      "label": "M-1",
+      "total_spend_usd": 6991.91,
+      "waste_usd": 862.69,
+      "waste_pct": 12.34,
+      "services": [
+        {
+          "service": "Lambda",
+          "spend_usd": 941.91,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 211.23,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 0,
+      "label": "M-0",
+      "total_spend_usd": 7664.5,
+      "waste_usd": 938.08,
+      "waste_pct": 12.24,
+      "services": [
+        {
+          "service": "Lambda",
+          "spend_usd": 1059.13,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 193.67,
+          "contains_waste": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "avg_monthly_total": 7402.18,
+    "avg_monthly_waste": 916.29,
+    "waste_services": [
+      "Lambda",
+      "S3"
+    ],
+    "pricing_note": "[L2-014] Lambda 비용 = 요청 수 + (Duration x 할당 메모리 GB-초). 3008MB → 512MB로 줄이면 함수당 약 $250/mo 절감 (3 함수 합계 $750/mo). · [L1-011] 8 TB eligible × ($0.023 - $0.004)/GB = 8,192 GB × $0.019 ≈ $155.6 → ~$152/mo"
+  }
+}

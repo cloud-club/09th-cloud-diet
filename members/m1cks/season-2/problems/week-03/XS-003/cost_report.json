@@ -1,0 +1,228 @@
+{
+  "scenario_id": "fusion",
+  "currency": "USD",
+  "period_months": 6,
+  "_fusion_components": [
+    "L2-016",
+    "L1-005",
+    "L2-017"
+  ],
+  "monthly_data": [
+    {
+      "month_offset": 5,
+      "label": "M-5",
+      "total_spend_usd": 15568.16,
+      "waste_usd": 1484.21,
+      "waste_pct": 9.53,
+      "services": [
+        {
+          "service": "Fargate",
+          "spend_usd": 738.24,
+          "contains_waste": true
+        },
+        {
+          "service": "ECS",
+          "spend_usd": 530.58,
+          "contains_waste": true
+        },
+        {
+          "service": "Auto Scaling",
+          "spend_usd": 256.9,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 221.2,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 34.11,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 4,
+      "label": "M-4",
+      "total_spend_usd": 16021.8,
+      "waste_usd": 1477.9,
+      "waste_pct": 9.22,
+      "services": [
+        {
+          "service": "Fargate",
+          "spend_usd": 764.83,
+          "contains_waste": true
+        },
+        {
+          "service": "ECS",
+          "spend_usd": 585.5,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 240.29,
+          "contains_waste": true
+        },
+        {
+          "service": "Auto Scaling",
+          "spend_usd": 214.0,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 35.07,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 3,
+      "label": "M-3",
+      "total_spend_usd": 15000.0,
+      "waste_usd": 1436.39,
+      "waste_pct": 9.58,
+      "services": [
+        {
+          "service": "ECS",
+          "spend_usd": 746.44,
+          "contains_waste": true
+        },
+        {
+          "service": "Fargate",
+          "spend_usd": 699.95,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 288.41,
+          "contains_waste": true
+        },
+        {
+          "service": "Auto Scaling",
+          "spend_usd": 284.2,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 42.0,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 2,
+      "label": "M-2",
+      "total_spend_usd": 15649.01,
+      "waste_usd": 1524.74,
+      "waste_pct": 9.74,
+      "services": [
+        {
+          "service": "ECS",
+          "spend_usd": 735.13,
+          "contains_waste": true
+        },
+        {
+          "service": "Fargate",
+          "spend_usd": 627.02,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 294.65,
+          "contains_waste": true
+        },
+        {
+          "service": "Auto Scaling",
+          "spend_usd": 264.83,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 38.84,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 1,
+      "label": "M-1",
+      "total_spend_usd": 16061.61,
+      "waste_usd": 1483.91,
+      "waste_pct": 9.24,
+      "services": [
+        {
+          "service": "ECS",
+          "spend_usd": 624.79,
+          "contains_waste": true
+        },
+        {
+          "service": "Fargate",
+          "spend_usd": 566.26,
+          "contains_waste": true
+        },
+        {
+          "service": "Auto Scaling",
+          "spend_usd": 239.77,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 215.19,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 37.89,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 0,
+      "label": "M-0",
+      "total_spend_usd": 15263.36,
+      "waste_usd": 1478.02,
+      "waste_pct": 9.68,
+      "services": [
+        {
+          "service": "ECS",
+          "spend_usd": 635.82,
+          "contains_waste": true
+        },
+        {
+          "service": "Fargate",
+          "spend_usd": 553.19,
+          "contains_waste": true
+        },
+        {
+          "service": "Auto Scaling",
+          "spend_usd": 282.55,
+          "contains_waste": true
+        },
+        {
+          "service": "EC2",
+          "spend_usd": 257.8,
+          "contains_waste": true
+        },
+        {
+          "service": "ELB",
+          "spend_usd": 40.47,
+          "contains_waste": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "avg_monthly_total": 15593.99,
+    "avg_monthly_waste": 1480.87,
+    "waste_services": [
+      "Auto Scaling",
+      "EC2",
+      "ECS",
+      "ELB",
+      "Fargate"
+    ],
+    "pricing_note": "[L2-016] Fargate 비용 = vCPU-시간($0.04048) + GB-시간($0.004445). 4vCPU/8GB → 1vCPU/2GB = 75% 절감. 현재 ~$1400/mo 중 $1050/mo 절감 가능. · [L1-005] ALB 고정 비용: $0.0225/hr × 730hr × 2 = $32.85/mo (LCU 비용 제외, 트래픽 0) · [L2-017] m5.xlarge = $0.192/hr. 평균 3개 불필요 인스턴스 × $0.192 × 730시간 = ~$420/mo 낭비."
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "scenario_id": "fusion",
+  "currency": "USD",
+  "period_months": 6,
+  "_fusion_components": [
+    "L3-029",
+    "L3-025"
+  ],
+  "monthly_data": [
+    {
+      "month_offset": 5,
+      "label": "M-5",
+      "total_spend_usd": 5379.39,
+      "waste_usd": 439.54,
+      "waste_pct": 8.17,
+      "services": [
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 216.79,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 190.62,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 178.17,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 4,
+      "label": "M-4",
+      "total_spend_usd": 5316.39,
+      "waste_usd": 409.17,
+      "waste_pct": 7.7,
+      "services": [
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 180.22,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 171.55,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 150.26,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 3,
+      "label": "M-3",
+      "total_spend_usd": 5510.7,
+      "waste_usd": 434.9,
+      "waste_pct": 7.89,
+      "services": [
+        {
+          "service": "VPC",
+          "spend_usd": 200.87,
+          "contains_waste": true
+        },
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 193.8,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 126.2,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 2,
+      "label": "M-2",
+      "total_spend_usd": 5198.02,
+      "waste_usd": 438.69,
+      "waste_pct": 8.44,
+      "services": [
+        {
+          "service": "VPC",
+          "spend_usd": 198.58,
+          "contains_waste": true
+        },
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 182.44,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 126.61,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 1,
+      "label": "M-1",
+      "total_spend_usd": 5248.36,
+      "waste_usd": 419.43,
+      "waste_pct": 7.99,
+      "services": [
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 190.35,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 176.87,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 170.96,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 0,
+      "label": "M-0",
+      "total_spend_usd": 5394.73,
+      "waste_usd": 442.68,
+      "waste_pct": 8.21,
+      "services": [
+        {
+          "service": "NAT Gateway",
+          "spend_usd": 186.43,
+          "contains_waste": true
+        },
+        {
+          "service": "VPC",
+          "spend_usd": 181.42,
+          "contains_waste": true
+        },
+        {
+          "service": "S3",
+          "spend_usd": 132.95,
+          "contains_waste": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "avg_monthly_total": 5341.27,
+    "avg_monthly_waste": 430.74,
+    "waste_services": [
+      "NAT Gateway",
+      "S3",
+      "VPC"
+    ],
+    "pricing_note": "[L3-029] NAT Gateway 처리 비용: 8TB x $0.045/GB = $360/월. S3 Gateway Endpoint 사용 시 NAT 처리 비용 전액 절감. · [L3-025] 전체 5TB 중 2/3(≈3.33TB)가 Cross-AZ 경유. 양방향 과금으로 3,333GB x $0.01 x 2 = $66/월 추가 비용. 단일 AZ 장애 시 가용성 리스크는 별도."
+  }
+}

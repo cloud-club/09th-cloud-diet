@@ -1,0 +1,22 @@
+{
+  "season": "2",
+  "week": 3,
+  "type": "fusion-analysis",
+  "level": null,
+  "scenarios": [
+    "XS-006"
+  ],
+  "theme": "멀티 에이전트 아키텍처 도입",
+  "ma_id": "XS-006",
+  "components": [
+    "L2-014",
+    "L2-015",
+    "L1-010"
+  ],
+  "company": "FinCore",
+  "seed": 1609034916,
+  "line_count": 228,
+  "expected_monthly_waste_usd": 1635.58,
+  "reveal_date": "2026-05-11",
+  "due_date": "2026-05-18"
+}

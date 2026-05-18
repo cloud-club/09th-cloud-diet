@@ -1,0 +1,135 @@
+{
+  "scenario_id": "fusion",
+  "currency": "USD",
+  "period_months": 6,
+  "_fusion_components": [
+    "L2-014",
+    "L2-015",
+    "L1-010"
+  ],
+  "monthly_data": [
+    {
+      "month_offset": 5,
+      "label": "M-5",
+      "total_spend_usd": 14668.49,
+      "waste_usd": 1605.84,
+      "waste_pct": 10.95,
+      "services": [
+        {
+          "service": "Lambda",
+          "spend_usd": 1214.78,
+          "contains_waste": true
+        },
+        {
+          "service": "DynamoDB",
+          "spend_usd": 580.05,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 4,
+      "label": "M-4",
+      "total_spend_usd": 14739.11,
+      "waste_usd": 1641.69,
+      "waste_pct": 11.14,
+      "services": [
+        {
+          "service": "Lambda",
+          "spend_usd": 1459.54,
+          "contains_waste": true
+        },
+        {
+          "service": "DynamoDB",
+          "spend_usd": 521.64,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 3,
+      "label": "M-3",
+      "total_spend_usd": 14420.69,
+      "waste_usd": 1639.96,
+      "waste_pct": 11.37,
+      "services": [
+        {
+          "service": "Lambda",
+          "spend_usd": 1512.38,
+          "contains_waste": true
+        },
+        {
+          "service": "DynamoDB",
+          "spend_usd": 644.94,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 2,
+      "label": "M-2",
+      "total_spend_usd": 15244.93,
+      "waste_usd": 1668.77,
+      "waste_pct": 10.95,
+      "services": [
+        {
+          "service": "Lambda",
+          "spend_usd": 1409.05,
+          "contains_waste": true
+        },
+        {
+          "service": "DynamoDB",
+          "spend_usd": 753.92,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 1,
+      "label": "M-1",
+      "total_spend_usd": 13953.22,
+      "waste_usd": 1643.91,
+      "waste_pct": 11.78,
+      "services": [
+        {
+          "service": "Lambda",
+          "spend_usd": 1489.96,
+          "contains_waste": true
+        },
+        {
+          "service": "DynamoDB",
+          "spend_usd": 565.13,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 0,
+      "label": "M-0",
+      "total_spend_usd": 14265.68,
+      "waste_usd": 1613.32,
+      "waste_pct": 11.31,
+      "services": [
+        {
+          "service": "Lambda",
+          "spend_usd": 1580.58,
+          "contains_waste": true
+        },
+        {
+          "service": "DynamoDB",
+          "spend_usd": 531.23,
+          "contains_waste": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "avg_monthly_total": 14548.68,
+    "avg_monthly_waste": 1635.58,
+    "waste_services": [
+      "DynamoDB",
+      "Lambda"
+    ],
+    "pricing_note": "[L2-014] Lambda 비용 = 요청 수 + (Duration x 할당 메모리 GB-초). 3008MB → 512MB로 줄이면 함수당 약 $250/mo 절감 (3 함수 합계 $750/mo). · [L2-015] 에러 시 900초 × 1024MB = 900 GB-초/호출. 하루 50000 × 2% = 1000 에러 호출 × 900 GB-초. 타임아웃을 10초로 줄이면 에러 비용 99% 절감. 함수당 약 $180/mo (2 함수 합계 $360/mo). · [L1-010] 미사용 WCU: 900 × $0.00065/hr × 730hr ≈ $427. 미사용 RCU: 4500 × $0.00013/hr × 730hr ≈ $427. 총 약 $522/mo 낭비 (실사용 대비 초과분)"
+  }
+}

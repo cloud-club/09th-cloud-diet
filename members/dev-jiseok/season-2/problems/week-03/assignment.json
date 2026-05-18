@@ -1,0 +1,24 @@
+{
+  "season": "2",
+  "week": 3,
+  "type": "fusion-analysis",
+  "level": null,
+  "scenarios": [
+    "XS-010"
+  ],
+  "theme": "멀티 에이전트 아키텍처 도입",
+  "ma_id": "XS-010",
+  "components": [
+    "L2-023",
+    "L3-035",
+    "L1-011",
+    "L1-012",
+    "L3-037"
+  ],
+  "company": "CashPulse",
+  "seed": 1352315978,
+  "line_count": 204,
+  "expected_monthly_waste_usd": 8227.17,
+  "reveal_date": "2026-05-11",
+  "due_date": "2026-05-18"
+}

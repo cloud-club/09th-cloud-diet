@@ -1,0 +1,103 @@
+{
+  "scenario_id": "fusion",
+  "currency": "USD",
+  "period_months": 6,
+  "_fusion_components": [
+    "L2-020",
+    "L1-004"
+  ],
+  "monthly_data": [
+    {
+      "month_offset": 5,
+      "label": "M-5",
+      "total_spend_usd": 12863.54,
+      "waste_usd": 1441.76,
+      "waste_pct": 11.21,
+      "services": [
+        {
+          "service": "RDS",
+          "spend_usd": 1522.81,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 4,
+      "label": "M-4",
+      "total_spend_usd": 13256.64,
+      "waste_usd": 1424.09,
+      "waste_pct": 10.74,
+      "services": [
+        {
+          "service": "RDS",
+          "spend_usd": 1918.41,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 3,
+      "label": "M-3",
+      "total_spend_usd": 11915.57,
+      "waste_usd": 1364.05,
+      "waste_pct": 11.45,
+      "services": [
+        {
+          "service": "RDS",
+          "spend_usd": 1706.18,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 2,
+      "label": "M-2",
+      "total_spend_usd": 12237.57,
+      "waste_usd": 1413.65,
+      "waste_pct": 11.55,
+      "services": [
+        {
+          "service": "RDS",
+          "spend_usd": 1751.4,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 1,
+      "label": "M-1",
+      "total_spend_usd": 12094.8,
+      "waste_usd": 1420.46,
+      "waste_pct": 11.74,
+      "services": [
+        {
+          "service": "RDS",
+          "spend_usd": 1659.03,
+          "contains_waste": true
+        }
+      ]
+    },
+    {
+      "month_offset": 0,
+      "label": "M-0",
+      "total_spend_usd": 12238.14,
+      "waste_usd": 1352.95,
+      "waste_pct": 11.06,
+      "services": [
+        {
+          "service": "RDS",
+          "spend_usd": 1832.48,
+          "contains_waste": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "avg_monthly_total": 12434.38,
+    "avg_monthly_waste": 1402.83,
+    "waste_services": [
+      "RDS"
+    ],
+    "pricing_note": "[L2-020] db.r5.xlarge = $0.48/hr. 미사용 Replica 3개 × $0.48 × 730시간 = ~$1051/mo. Replica 삭제 또는 앱에서 Reader Endpoint 사용 설정. · [L1-004] Multi-AZ 추가 비용: 2 × $0.24/hr × 730hr = $350.4/mo (Single-AZ 전환 시 절감액)"
+  }
+}

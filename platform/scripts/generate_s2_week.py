@@ -135,6 +135,194 @@ WEEK2_ASSIGNMENTS = {
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Week 3 — Cross-Service coupled waste scenarios
+# ─────────────────────────────────────────────────────────────────────────────
+
+FUSION_MAP_XS = {
+    "XS-001": {
+        "title": "Lambda → S3 GET 폭증 (캐시 부재)",
+        "components": ["L2-014", "L1-011"],
+        "narrative": (
+            "B2B 주문 처리 lambda가 상품 카탈로그를 매 invocation마다 S3에서 GET. 캐시 없음. "
+            "S3 비용은 storage만 모니터링하고 request cost는 무시됐고, Lambda duration 증가는 "
+            '"트래픽 늘었으니 당연"으로 합리화됐습니다. 두 서비스 line item이 각각 정상으로 보이는 게 함정.'
+        ),
+        "multi_agent_hint": (
+            "단일 서비스 분석으론 Lambda·S3 둘 다 정상으로 보임. "
+            "Lambda 전문가가 함수의 의존 패턴(외부 호출 빈도)을 측정하고 Storage 전문가가 request rate를 attribution하면 "
+            "두 영역을 잇는 caching 부재가 보입니다."
+        ),
+    },
+    "XS-002": {
+        "title": "EC2 종료 후 잔존 자원 클러스터",
+        "components": ["L1-001", "L1-003", "L1-007"],
+        "narrative": (
+            "자동화 스크립트로 EC2를 종료했지만 EBS는 detach 후 delete 안 함. EIP는 release 안 함. "
+            "AMI는 deregister만 하고 associated snapshot은 남김. 1년간 반복. detached resource는 "
+            "태그 상속이 자동이 아니라 cost allocation에서 unattributed 풀에 빠집니다."
+        ),
+        "multi_agent_hint": (
+            "EC2 / EBS / EIP / Snapshot 4 도메인 동시 점검. 단일 에이전트는 detach 시점 정보를 못 잡지만, "
+            "Storage 전문가가 snapshot age + source volume 존재 여부를, Network 전문가가 EIP attached 여부를 cross-check하면 "
+            "고아 자원 식별 가능."
+        ),
+    },
+    "XS-003": {
+        "title": "ECS 다운스케일 후 살아남은 인프라",
+        "components": ["L2-016", "L1-005", "L2-017"],
+        "narrative": (
+            "Black Friday 대비 ECS 클러스터 task 100→400 확장 + ALB 2개 + NAT capacity 증설. "
+            "이벤트 후 task는 100으로 자동 복귀했지만 ALB·target group 라우팅·NAT 흐름 capacity는 "
+            "IaC와 별개로 콘솔에서 손으로 만든 거라 남아있습니다. ECS Fargate 비용 절감은 visible, "
+            "부속 infra는 별도 line item이라 '함께 줄어든 것'으로 착시."
+        ),
+        "multi_agent_hint": (
+            "Compute 전문가가 ECS task 수 추이를 보고, Network 전문가가 ALB RequestCount + NAT BytesProcessed를 함께 분석하면 "
+            "'task는 줄었는데 infra는 안 줄었다' 패턴이 보임."
+        ),
+    },
+    "XS-004": {
+        "title": "ML inference endpoint 24/7 idle (학습 종료 후)",
+        "components": ["L2-014", "L1-005"],
+        "narrative": (
+            "ML팀이 매주 retraining 결과를 ML endpoint에 자동 배포. inference는 weekday 09:00-18:00만 발생, "
+            "야간·주말 invocation 거의 0인데 endpoint는 24/7. training cost는 spike형이라 알람 있는데, "
+            "endpoint는 steady-state라 정상 budget으로 인식. "
+            "(시즌 1 catalog에 SageMaker 시나리오가 없어 Lambda 메모리 idle + LB idle로 대체 모델링.)"
+        ),
+        "multi_agent_hint": (
+            "Compute 전문가가 invocation 시계열 hourly histogram을 분석하고 Cost 전문가가 idle time 비율을 계산하면 "
+            "70% idle 패턴 즉시 드러남."
+        ),
+    },
+    "XS-005": {
+        "title": "S3 데이터 NAT 경유 (VPC Endpoint 미설정)",
+        "components": ["L3-029", "L3-025"],
+        "narrative": (
+            "Data 분석 EC2 fleet이 Private subnet에 있는데 S3 Gateway Endpoint 설정 누락. "
+            "모든 S3 접근이 NAT → Internet → S3 경유. 게다가 NAT GW가 Single-AZ 배치라 다른 AZ의 EC2는 "
+            "cross-AZ 비용까지 이중 과금. 청구서 line item이 NAT-Bytes로 뭉뚱그려져 destination이 S3인 줄 모름."
+        ),
+        "multi_agent_hint": (
+            "Network 전문가가 VPC Flow Logs로 NAT 트래픽의 destination을 attribute하고, "
+            "Storage 전문가가 같은 fleet의 S3 접근 패턴을 보면 'NAT 트래픽의 80%가 S3' 같은 cross-domain 통찰이 도출됨."
+        ),
+    },
+    "XS-006": {
+        "title": "API GW → Lambda → DDB cascade amplification",
+        "components": ["L2-014", "L2-015", "L1-010"],
+        "narrative": (
+            "마케팅 캠페인 트래픽이 평소 10배. API Gateway throttle 미설정. Lambda reserved concurrency 1000 도달. "
+            "DDB provisioned가 RCU/WCU 초과로 throttle. Lambda는 default retry → 같은 요청이 1~4회 반복 처리. "
+            "각 서비스 단위로는 '트래픽 늘었으니 정상'으로 보이는데, retry amplification으로 cost가 N배 곱해짐."
+        ),
+        "multi_agent_hint": (
+            "Compute 전문가가 Lambda Errors/Throttles ratio를, DB 전문가가 DDB ThrottledRequests를, "
+            "Edge 전문가가 API GW 5XX rate를 동시 분석하면 cascade pattern이 드러남."
+        ),
+    },
+    "XS-007": {
+        "title": "Step Functions polling 패턴 (transition 폭증)",
+        "components": ["L2-021", "L2-015"],
+        "narrative": (
+            "Long-running task 상태 확인을 Wait state로 30초 polling. 100개 동시 워크플로우 × 평균 2시간 실행. "
+            "transition rate가 visual editor에서 안 보여 관리자가 모름. SQS short polling 패턴과 본질 같음."
+        ),
+        "multi_agent_hint": (
+            "Orchestration 전문가가 transition rate vs execution count ratio를 계산. "
+            "ratio > 100이면 polling 패턴 의심 시그널."
+        ),
+    },
+    "XS-008": {
+        "title": "EventBridge fanout 중복 처리",
+        "components": ["L2-014", "L2-015", "L1-009"],
+        "narrative": (
+            "단일 OrderCreated 이벤트가 8개 Lambda target에 fanout. 그 중 3개가 같은 downstream service 호출. "
+            "사용자에게 알림 3번 발송. 각 Lambda는 '책임이 다르다'고 주장하는데 코드 리뷰 안 하면 모름."
+        ),
+        "multi_agent_hint": (
+            "Compute 전문가가 lambda 코드 static analysis로 동일 외부 API 호출을 검출하고, "
+            "Event 전문가가 fanout 규칙 시각화. 두 분석 cross-check로 중복 발견."
+        ),
+    },
+    "XS-009": {
+        "title": "Route53 health check + NLB cross-zone overcharge",
+        "components": ["L3-028", "L1-005"],
+        "narrative": (
+            "Active-active 멀티 region 구성. Route53 health check를 모든 region에서 모든 endpoint로 full mesh. "
+            "ELB는 NLB이고 cross-zone load balancing default 활성화. NLB cross-zone은 $0.01/GB 과금되는데 "
+            "ALB는 무료라는 차이를 모름. DataTransfer-Regional-Bytes로 뭉뚱그려져 원인 파악 어려움."
+        ),
+        "multi_agent_hint": (
+            "DNS/Routing 전문가가 health check count를, Edge 전문가가 NLB cross-zone traffic을 분석하면 "
+            "ALB로 교체 가능 여부 판단 가능."
+        ),
+    },
+    "XS-010": {
+        "title": "Glue → S3 → Athena 데이터 레이크 위생 붕괴",
+        "components": ["L2-023", "L3-035", "L1-011", "L1-012", "L3-037"],
+        "narrative": (
+            "ETL pipeline이 Glue로 raw → S3 intermediate → Athena query → S3 result → 다시 Athena. "
+            "중간 결과 lifecycle 없음 + partition 없는 반복 scan. 6개월 누적. lake 청소 책임 불분명."
+        ),
+        "multi_agent_hint": (
+            "Analytics 전문가가 Athena query history scan size를, Storage 전문가가 S3 inventory의 stale object 비율을 분석. "
+            "Pipeline 전문가가 Glue job DAG를 보고 'curated table 분리' 권장."
+        ),
+    },
+    "XS-011": {
+        "title": "RDS Read Replica 잘못된 region (transfer 폭증)",
+        "components": ["L2-020", "L1-004"],
+        "narrative": (
+            "DR 목적으로 cross-region replica 구축. 그런데 dev팀이 read traffic을 misconfiguration으로 "
+            "cross-region replica로 보내도록 설정. 게다가 같은 dev RDS는 Multi-AZ까지 켜져있음. "
+            "replica 비용 + cross-region transfer 이중 함정."
+        ),
+        "multi_agent_hint": (
+            "DB 전문가가 replica endpoint 사용 패턴을, Network 전문가가 VPC Flow Logs cross-region direction을 "
+            "함께 보면 misconfiguration 식별 가능."
+        ),
+    },
+    "XS-012": {
+        "title": "CloudFront origin이 EC2 (S3 아님) — egress 누적",
+        "components": ["L3-039", "L1-005"],
+        "narrative": (
+            "정적 자산을 EC2 nginx에서 서빙. CloudFront 앞에 두기는 했는데 origin이 EC2라 cache miss 시 "
+            "EC2 egress 발생. cache TTL이 1시간으로 짧게 설정되어 miss ratio 40%. "
+            "CloudFront 도입했다는 안정감 → 'CDN 썼으니 OK'라 모니터링 약함."
+        ),
+        "multi_agent_hint": (
+            "Edge 전문가가 CacheHitRate metric을, Compute 전문가가 EC2 NetworkOut을 분석하면 "
+            "'origin을 S3로 옮기면 무료' 권장 가능."
+        ),
+    },
+}
+
+# Member → XS-XXX assignment (Week 3)
+# Week 2 페어를 깨고 다른 사람과 페어 — 비교 데이터 다양화
+WEEK3_ASSIGNMENTS = {
+    "dev-jiseok":    "XS-010",  # leader — data lake 종합 분석 (Glue+S3+Athena)
+    "seoyoungleeme": "XS-001",  # 페어 ↔ 600gramSik (Week 2와 다른 페어)
+    "600gramSik":    "XS-001",  #
+    "juanxiu":       "XS-002",  # 단독
+    "7910trio":      "XS-005",  # 페어 ↔ jud1thDev (Week 2 페어 깨고 다른 사람과)
+    "jud1thDev":     "XS-005",  #
+    "do-dop":        "XS-006",  # 단독 (Week 2 placeholder 제출 — 본주 정성스러운 답 권장)
+    "m1cks":         "XS-003",  # 단독
+    "weeeeestern":   "XS-011",  # 단독
+}
+
+# Unified per-week assignments
+WEEK_ASSIGNMENTS = {
+    2: WEEK2_ASSIGNMENTS,
+    3: WEEK3_ASSIGNMENTS,
+}
+
+# Merge FUSION_MAP_XS into main FUSION_MAP
+FUSION_MAP.update(FUSION_MAP_XS)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Helpers
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -518,10 +706,12 @@ def main():
 
     output_base = Path(args.output)
 
-    if args.week != 2:
-        print(f"WARNING: only Week 2 assignments are defined right now (got --week {args.week})")
+    if args.week not in WEEK_ASSIGNMENTS:
+        print(f"ERROR: no assignments defined for Week {args.week}. "
+              f"Defined weeks: {sorted(WEEK_ASSIGNMENTS.keys())}")
+        return
 
-    assignments = WEEK2_ASSIGNMENTS  # extend per-week as needed
+    assignments = WEEK_ASSIGNMENTS[args.week]
     print(f"=== Season 2 · Week {args.week} fusion generation ===")
     print(f"Members: {len(assignments)}, salt: {args.salt}")
     print()

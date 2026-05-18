@@ -1,0 +1,22 @@
+{
+  "season": "2",
+  "week": 3,
+  "type": "fusion-analysis",
+  "level": null,
+  "scenarios": [
+    "XS-003"
+  ],
+  "theme": "멀티 에이전트 아키텍처 도입",
+  "ma_id": "XS-003",
+  "components": [
+    "L2-016",
+    "L1-005",
+    "L2-017"
+  ],
+  "company": "PulseAI",
+  "seed": 1584849139,
+  "line_count": 837,
+  "expected_monthly_waste_usd": 1480.87,
+  "reveal_date": "2026-05-11",
+  "due_date": "2026-05-18"
+}
