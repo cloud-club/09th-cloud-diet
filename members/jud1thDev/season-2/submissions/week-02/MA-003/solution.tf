@@ -41,7 +41,7 @@ resource "aws_eks_cluster" "comp1_eks-cluster-pkd6k6" {
 
 resource "aws_instance" "comp1_instance-v0ektn" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -57,7 +57,7 @@ resource "aws_instance" "comp1_instance-v0ektn" {
 
 resource "aws_instance" "comp1_instance-xywbs0" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -73,7 +73,7 @@ resource "aws_instance" "comp1_instance-xywbs0" {
 
 resource "aws_instance" "comp1_instance-92mtlz" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -89,7 +89,7 @@ resource "aws_instance" "comp1_instance-92mtlz" {
 
 resource "aws_instance" "comp1_instance-ij9snq" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -105,7 +105,7 @@ resource "aws_instance" "comp1_instance-ij9snq" {
 
 resource "aws_instance" "comp1_instance-0w7cj6" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -121,7 +121,7 @@ resource "aws_instance" "comp1_instance-0w7cj6" {
 
 resource "aws_instance" "comp1_instance-a1zgs0" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -137,7 +137,7 @@ resource "aws_instance" "comp1_instance-a1zgs0" {
 
 resource "aws_instance" "comp1_instance-o7vva7" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -153,7 +153,7 @@ resource "aws_instance" "comp1_instance-o7vva7" {
 
 resource "aws_instance" "comp1_instance-vz40u3" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -169,7 +169,7 @@ resource "aws_instance" "comp1_instance-vz40u3" {
 
 resource "aws_instance" "comp1_instance-r324gy" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -185,7 +185,7 @@ resource "aws_instance" "comp1_instance-r324gy" {
 
 resource "aws_instance" "comp1_instance-qfvjou" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -201,7 +201,7 @@ resource "aws_instance" "comp1_instance-qfvjou" {
 
 resource "aws_instance" "comp1_instance-dhik62" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -217,7 +217,7 @@ resource "aws_instance" "comp1_instance-dhik62" {
 
 resource "aws_instance" "comp1_instance-nr5xcq" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -233,7 +233,7 @@ resource "aws_instance" "comp1_instance-nr5xcq" {
 
 resource "aws_instance" "comp1_instance-01drud" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -249,7 +249,7 @@ resource "aws_instance" "comp1_instance-01drud" {
 
 resource "aws_instance" "comp1_instance-yv666q" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -265,7 +265,7 @@ resource "aws_instance" "comp1_instance-yv666q" {
 
 resource "aws_instance" "comp1_instance-kiyrpa" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -281,7 +281,7 @@ resource "aws_instance" "comp1_instance-kiyrpa" {
 
 resource "aws_instance" "comp1_instance-csr5nu" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -297,7 +297,7 @@ resource "aws_instance" "comp1_instance-csr5nu" {
 
 resource "aws_instance" "comp1_instance-mf923m" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -313,7 +313,7 @@ resource "aws_instance" "comp1_instance-mf923m" {
 
 resource "aws_instance" "comp1_instance-mk1qxs" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -329,7 +329,7 @@ resource "aws_instance" "comp1_instance-mk1qxs" {
 
 resource "aws_instance" "comp1_instance-c1qec6" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
@@ -345,7 +345,7 @@ resource "aws_instance" "comp1_instance-c1qec6" {
 
 resource "aws_instance" "comp1_instance-rntl0o" {
   ami           = "ami-0abcdef1234567890"
-  instance_type = "m5.2xlarge"
+  instance_type = "m5.large"
   subnet_id     = aws_subnet.main.id
 
   root_block_device {
