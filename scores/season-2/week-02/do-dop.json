@@ -1,0 +1,27 @@
+{
+  "username": "do-dop",
+  "week": 2,
+  "season": "2",
+  "scenario": "MA-004",
+  "issue": 1,
+  "issue_url": "https://github.com/cloud-club/09th-cloud-diet/issues/1",
+  "submitted_at": "2026-05-17",
+  "scores": {
+    "problem_identification": 1,
+    "root_cause": 1,
+    "proposed_solution": 1,
+    "savings_estimate": 0,
+    "multi_agent_measurement": 0
+  },
+  "max_total": 100,
+  "comments": {
+    "problem_identification": "\"test\" 한 단어. 본 시나리오(Kinesis EFO + Lambda timeout + S3 CRR + Athena 무제한)의 4개 패턴 식별 필요.",
+    "root_cause": "\"test\". 도메인 간 chain reasoning이 핵심인 시나리오인데 분석 없음.",
+    "proposed_solution": "\"test\". 구체적 권장사항 없음.",
+    "savings_estimate": "$100 입력했으나 expected $1,283/월과 큰 차이. 추정 근거 없음.",
+    "multi_agent_measurement": "측정 데이터 없음. 단일 vs 멀티 비교 미수행.",
+    "overall": "명백한 placeholder 제출. Submit 페이지 동작 테스트로 보임. 재제출 권장 — 데드라인 2026-05-18까지."
+  },
+  "total": 3,
+  "percentage": 3.0
+}
