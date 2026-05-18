@@ -1,0 +1,13 @@
+{
+  "id": "1779063600000-dev-jiseok",
+  "title": "Week 3 참고 자료 — Cross-Service 결합 낭비 분석 (33선)",
+  "author": "dev-jiseok",
+  "date": "2026-05-13T00:00:00.000Z",
+  "week": "3",
+  "season": "2",
+  "category": "note",
+  "description": "Cross-Service 결합 낭비 학습 자료 큐레이션. 🔴 필수 3편(NAT/VPC Endpoint 가격, log correlation 추적, Cost Anomaly Detection) + 🟡 권장(NAT/Endpoint·Step Functions·CloudFront 등 8영역) + 🟩 한국어 사례 5편 + 🟢 심화 5편. 시즌 1 + Week 2 자료와 중복 0.",
+  "files": [
+    "study-materials.md"
+  ]
+}
