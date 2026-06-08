@@ -2,12 +2,12 @@
   "id": "1780921749341-dev-jiseok",
   "title": "Week 6 — Shift Left (배포 전 자동 비용 검증) 학습 자료",
   "author": "dev-jiseok",
-  "date": "2026-06-08T12:29:59.002Z",
+  "date": "2026-06-08T12:30:20.508Z",
   "week": "6",
   "season": "2",
   "category": "note",
   "description": "# Week 6 — Shift Left (배포 전 자동 비용 검증) 학습 자료\n\n> 이번 주차 목표: **배포된 인프라 분석**(시즌 1~Week 5)에서 → **배포 전 PR 단계 비용 검증**으로 이동.\n> `terraform plan`을 JSON으로 뽑아 **PR에 자동 비용 코멘트** + **OPA/Conftest 정책 검증** + **자동 수정 PR**을 거는 게 핵심.\n> 본인 도구에 **PR 봇** 또는 **`/review-tf` 모드**를 추가하는 게 산출물.",
   "files": [
-    "content.md"
+    "studymaterials.md"
   ]
 }
