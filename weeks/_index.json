@@ -492,5 +492,18 @@
     "files": [
       "7주차studymaterials.md"
     ]
+  },
+  {
+    "id": "1781573259128-dev-jiseok",
+    "title": "Week 8 참고 자료 — 결과 발표 + 외부 공개 (스토리텔링·리포팅·오픈소스)",
+    "author": "dev-jiseok",
+    "date": "2026-06-16T01:27:39.128Z",
+    "week": "8",
+    "season": "2",
+    "category": "note",
+    "description": "결과 발표 + 외부 공개 학습 자료 큐레이션. 🔴 필수 3편(FinOps Reporting & Analytics, 데이터 스토리텔링, KPI·벤치마킹) + 🟡 권장(State of FinOps·Well-Architected·오픈소스 가이드) + 🟩 한국어 4편 + 🟢 심화 2편. 기술 구현을 절감 스토리·단위경제로 번역해 발표 + 블로그/오픈소스 공개.",
+    "files": [
+      "8주차studymaterials.md"
+    ]
   }
 ]
