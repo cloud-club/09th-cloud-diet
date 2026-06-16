@@ -479,5 +479,18 @@
     "files": [
       "studymaterials.md"
     ]
+  },
+  {
+    "id": "1781573223062-dev-jiseok",
+    "title": "Week 7 참고 자료 — 멀티 클라우드 + FOCUS 1.1 (AWS·GCP·Azure 비용 표준화)",
+    "author": "dev-jiseok",
+    "date": "2026-06-16T01:27:03.062Z",
+    "week": "7",
+    "season": "2",
+    "category": "note",
+    "description": "멀티 클라우드 + FOCUS 1.1 학습 자료 큐레이션. 🔴 필수 3편(FOCUS 스펙 v1.1, AWS Data Exports FOCUS, GCP·Azure FOCUS export) + 🟡 권장(FOCUS GitHub·v1.2·LLM routing·data transfer 단가) + 🟩 한국어 4편 + 🟢 심화 3편. 본인 도구 입력 레이어를 FOCUS 호환으로 + 추가 클라우드 프로토타입.",
+    "files": [
+      "7주차studymaterials.md"
+    ]
   }
 ]
